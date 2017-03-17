@@ -5,8 +5,4 @@
     <string name="title_statistics">Statistics</string>
     <string name="title_activity_settings">Settings</string>
     <string name="title_activity_login">Sign in</string>
-    <string name="action_settings">Settings</string>
-    <string name="action_sample_login">Sample Login</string>
-    <string name="title_status">Status</string>
-    <string name="title_reports">Reports</string>
 </resources>

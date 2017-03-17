@@ -1,6 +1,7 @@
 package com.example.android.bloodbankapp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -9,7 +10,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+import layout.NewEntryFragment;
+import layout.StatisticsFragment;
+import layout.TransactionsFragment;
+
+public class MainActivity extends AppCompatActivity implements NewEntryFragment.OnFragmentInteractionListener, TransactionsFragment.OnFragmentInteractionListener, StatisticsFragment.OnFragmentInteractionListener {
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -18,17 +23,21 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_new_entry:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.content, new NewEntryFragment()).commit();
+                    NewEntryFragment newEntryFragment = new NewEntryFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.content, newEntryFragment).commit();
                     return true;
                 case R.id.navigation_transactions:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.content, new TransactionsFragment()).commit();
+                    TransactionsFragment transactionsFragment = new TransactionsFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.content, transactionsFragment).commit();
                     return true;
                 case R.id.navigation_statistics:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.content, new StatisticsFragment()).commit();
+                    StatisticsFragment statisticsFragment = new StatisticsFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.content, statisticsFragment).commit();
                     return true;
             }
             return false;
         }
+
     };
 
     @Override
@@ -39,6 +48,10 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         View view = navigation.findViewById(R.id.navigation_new_entry);
         view.performClick();
+    }
+
+    public void onFragmentInteraction(Uri uri) {
+
     }
 
     @Override
@@ -60,4 +73,5 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

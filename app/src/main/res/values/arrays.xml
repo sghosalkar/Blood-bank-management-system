@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <string-array name="statistics_subtitle_array">
-        <item>@string/title_status</item>
-        <item>@string/title_reports</item>
-    </string-array>
-
-</resources>
