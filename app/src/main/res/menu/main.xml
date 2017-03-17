@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/settings"
-        android:title="Settings"
+        android:title="@string/action_settings"
         android:icon="@drawable/ic_options_black_24dp"
         app:showAsAction="never"/>
 
     <item android:id="@+id/sample_login"
-        android:title="Sample Login"
+        android:title="@string/action_sample_login"
         app:showAsAction="never"/>
 
 </menu>

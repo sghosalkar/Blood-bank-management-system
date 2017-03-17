@@ -2,12 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TransactionsFragment">
+    tools:context="com.example.android.bloodbankapp.StatisticsReportsFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/title_transactions" />
+        android:text="@string/title_reports" />
 
 </FrameLayout>
