@@ -1,13 +1,19 @@
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.android.bloodbankapp.StatisticsReportsFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/title_reports" />
+        android:id="@+id/lv_report"
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="0dp"
 
+        />
 </FrameLayout>
