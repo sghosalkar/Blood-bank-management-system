@@ -9,4 +9,5 @@
     <string name="action_sample_login">Sample Login</string>
     <string name="title_status">Status</string>
     <string name="title_reports">Reports</string>
+    <string name="title_transaction_details">Transaction Details</string>
 </resources>

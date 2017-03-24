@@ -1,5 +1,6 @@
 package com.example.android.bloodbankapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -35,11 +36,7 @@ public class TransactionsFragment extends Fragment implements TransactionAdapter
 
     @Override
     public void onListItemClick(int clickedItemIndex) {
-        if(mToast != null) {
-            mToast.cancel();
-        }
-        String toastMessage = "Item " + clickedItemIndex + " clicked";
-        mToast = Toast.makeText(getContext(), toastMessage, Toast.LENGTH_SHORT);
-        mToast.show();
+        Intent intent = new Intent(getActivity(), TransactionDetailActivity.class);
+        startActivity(intent);
     }
 }
