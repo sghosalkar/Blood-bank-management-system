@@ -7,13 +7,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
-public class TransactionsFragment extends Fragment {
+public class TransactionsFragment extends Fragment implements TransactionAdapter.ListItemClickListener {
 
     public static final String LOG_TAG = TransactionsFragment.class.getSimpleName();
     private static final int TRANS_LIST_ITEMS = 100;
     private TransactionAdapter mTransactionAdapter;
     private RecyclerView mTransactionList;
+
+    private Toast mToast;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -25,15 +28,18 @@ public class TransactionsFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this.getContext());
         mTransactionList.setLayoutManager(layoutManager);
         mTransactionList.setHasFixedSize(true);
-        mTransactionAdapter = new TransactionAdapter(TRANS_LIST_ITEMS);
+        mTransactionAdapter = new TransactionAdapter(TRANS_LIST_ITEMS, this);
         mTransactionList.setAdapter(mTransactionAdapter);
-//        mTransactionAdapter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                Toast toast = Toast.makeText(getContext(), "Here", Toast.LENGTH_SHORT);
-//                toast.show();
-//            }
-//        });
         return rootView;
+    }
+
+    @Override
+    public void onListItemClick(int clickedItemIndex) {
+        if(mToast != null) {
+            mToast.cancel();
+        }
+        String toastMessage = "Item " + clickedItemIndex + " clicked";
+        mToast = Toast.makeText(getContext(), toastMessage, Toast.LENGTH_SHORT);
+        mToast.show();
     }
 }

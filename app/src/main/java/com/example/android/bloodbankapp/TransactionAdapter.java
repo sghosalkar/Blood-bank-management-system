@@ -13,10 +13,15 @@ import android.widget.TextView;
 
 public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.TransactionViewHolder>{
 
+    private static final String TAG = TransactionAdapter.class.getSimpleName();
+
     private int mNumberItems;
 
-    public TransactionAdapter(int numberOfItems) {
+    final private ListItemClickListener mOnClickListener;
+
+    public TransactionAdapter(int numberOfItems, ListItemClickListener listener) {
         mNumberItems = numberOfItems;
+        mOnClickListener = listener;
     }
 
     @Override
@@ -38,7 +43,8 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
         return mNumberItems;
     }
 
-    class TransactionViewHolder extends RecyclerView.ViewHolder {
+    class TransactionViewHolder extends RecyclerView.ViewHolder
+            implements View.OnClickListener {
         public final TextView nameView;
         public final TextView typeView;
         public final TextView bloodGroupView;
@@ -50,6 +56,7 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
             typeView = (TextView) view.findViewById(R.id.list_item_type_textview);
             bloodGroupView = (TextView) view.findViewById(R.id.list_item_blood_group_textview);
             quantityView = (TextView) view.findViewById(R.id.list_item_quantity_textview);
+            itemView.setOnClickListener(this);
         }
 
         void bind(int listIndex) {
@@ -58,5 +65,15 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
             bloodGroupView.setText("O+");
             quantityView.setText("300 mL");
         }
+
+        @Override
+        public void onClick(View view) {
+            int clickedPosition = getAdapterPosition();
+            mOnClickListener.onListItemClick(clickedPosition);
+        }
+    }
+
+    public interface ListItemClickListener {
+        void onListItemClick(int clickedItemIndex);
     }
 }
