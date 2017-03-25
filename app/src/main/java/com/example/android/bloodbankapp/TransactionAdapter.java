@@ -38,10 +38,13 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
 
     @Override
     public void onBindViewHolder(TransactionAdapter.TransactionViewHolder holder, int position) {
+        //check if cursor is empty
         if (!mCursor.moveToPosition(position)) {
+            //bind dummy data
             holder.bind(position);
             return;
         }
+        //Get data from cursor
         String donorKey = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorTransactionEntry.COLUMN_DONOR_KEY));
         String quantity = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorTransactionEntry.COLUMN_QUANTITY));
         String price = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorTransactionEntry.COLUMN_PRICE));
@@ -72,6 +75,7 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
         }
 
         void bind(int listIndex) {
+            //Dummy data
             nameView.setText("Mogambo khush hua");
             typeView.setText("Donor");
             bloodGroupView.setText("O+");
@@ -80,7 +84,9 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
 
         @Override
         public void onClick(View view) {
+            //Get clicked position
             int clickedPosition = getAdapterPosition();
+            //Set click listener on clicked position
             mOnClickListener.onListItemClick(clickedPosition);
         }
     }

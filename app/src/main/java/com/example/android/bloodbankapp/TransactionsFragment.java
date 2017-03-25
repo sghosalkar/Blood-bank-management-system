@@ -33,6 +33,7 @@ public class TransactionsFragment extends Fragment implements TransactionAdapter
         mTransactionList.setLayoutManager(layoutManager);
         mTransactionList.setHasFixedSize(true);
 
+        //Fetch data from database
         BloodBankDbHelper dbHelper = new BloodBankDbHelper(this.getContext());
         mDb = dbHelper.getWritableDatabase();
         Cursor cursor = getAllTransactions();
@@ -43,11 +44,13 @@ public class TransactionsFragment extends Fragment implements TransactionAdapter
 
     @Override
     public void onListItemClick(int clickedItemIndex) {
+        //handler for item click
         Intent intent = new Intent(getActivity(), TransactionDetailActivity.class);
         startActivity(intent);
     }
 
     private Cursor getAllTransactions() {
+        //Query for retrieving all transactions (modification required)
         return mDb.query(
                 BloodBankContract.DonorTransactionEntry.TABLE_NAME,
                 null,

@@ -11,7 +11,7 @@ import android.widget.ListView;
 
 
 public class StatisticsReportsFragment extends Fragment {
- ListView listview;
+    ListView listview;
     int up=R.drawable.up;
     int down=R.drawable.down;
     String month[]={"December","January","February","MArch"};
@@ -20,7 +20,7 @@ public class StatisticsReportsFragment extends Fragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view=  inflater.inflate(R.layout.fragment_statistics_reports, container, false);
-         listview= (ListView) view.findViewById(R.id.lv_report);
+        listview= (ListView) view.findViewById(R.id.lv_report);
         ReportAdapter ra=new ReportAdapter(getContext(),R.layout.row_layout);
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
