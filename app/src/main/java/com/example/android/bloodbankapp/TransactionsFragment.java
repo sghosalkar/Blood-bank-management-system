@@ -1,6 +1,8 @@
 package com.example.android.bloodbankapp;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,16 +10,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+
+import com.example.android.bloodbankapp.data.BloodBankContract;
+import com.example.android.bloodbankapp.data.BloodBankDbHelper;
 
 public class TransactionsFragment extends Fragment implements TransactionAdapter.ListItemClickListener {
 
     public static final String LOG_TAG = TransactionsFragment.class.getSimpleName();
-    private static final int TRANS_LIST_ITEMS = 100;
     private TransactionAdapter mTransactionAdapter;
     private RecyclerView mTransactionList;
 
-    private Toast mToast;
+    SQLiteDatabase mDb;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,7 +32,11 @@ public class TransactionsFragment extends Fragment implements TransactionAdapter
         LinearLayoutManager layoutManager = new LinearLayoutManager(this.getContext());
         mTransactionList.setLayoutManager(layoutManager);
         mTransactionList.setHasFixedSize(true);
-        mTransactionAdapter = new TransactionAdapter(TRANS_LIST_ITEMS, this);
+
+        BloodBankDbHelper dbHelper = new BloodBankDbHelper(this.getContext());
+        mDb = dbHelper.getWritableDatabase();
+        Cursor cursor = getAllTransactions();
+        mTransactionAdapter = new TransactionAdapter(cursor, this);
         mTransactionList.setAdapter(mTransactionAdapter);
         return rootView;
     }
@@ -38,5 +45,17 @@ public class TransactionsFragment extends Fragment implements TransactionAdapter
     public void onListItemClick(int clickedItemIndex) {
         Intent intent = new Intent(getActivity(), TransactionDetailActivity.class);
         startActivity(intent);
+    }
+
+    private Cursor getAllTransactions() {
+        return mDb.query(
+                BloodBankContract.DonorTransactionEntry.TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                BloodBankContract.DonorTransactionEntry.COLUMN_TRANSACTION_DATE
+        );
     }
 }

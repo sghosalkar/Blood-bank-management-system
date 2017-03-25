@@ -1,11 +1,14 @@
 package com.example.android.bloodbankapp;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.example.android.bloodbankapp.data.BloodBankContract;
 
 /**
  * Created by shubham on 22/3/17.
@@ -15,12 +18,12 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
 
     private static final String TAG = TransactionAdapter.class.getSimpleName();
 
-    private int mNumberItems;
+    private Cursor mCursor;
 
     final private ListItemClickListener mOnClickListener;
 
-    public TransactionAdapter(int numberOfItems, ListItemClickListener listener) {
-        mNumberItems = numberOfItems;
+    public TransactionAdapter(Cursor cursor, ListItemClickListener listener) {
+        this.mCursor = cursor;
         mOnClickListener = listener;
     }
 
@@ -35,12 +38,21 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
 
     @Override
     public void onBindViewHolder(TransactionAdapter.TransactionViewHolder holder, int position) {
-        holder.bind(position);
+        if (!mCursor.moveToPosition(position)) {
+            holder.bind(position);
+            return;
+        }
+        String donorKey = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorTransactionEntry.COLUMN_DONOR_KEY));
+        String quantity = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorTransactionEntry.COLUMN_QUANTITY));
+        String price = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorTransactionEntry.COLUMN_PRICE));
+        String date = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorTransactionEntry.COLUMN_TRANSACTION_DATE));
     }
 
     @Override
     public int getItemCount() {
-        return mNumberItems;
+        if(mCursor.getCount() == 0)
+            return 5;
+        return mCursor.getCount();
     }
 
     class TransactionViewHolder extends RecyclerView.ViewHolder

@@ -45,7 +45,7 @@ public class BloodBankDbHelper extends SQLiteOpenHelper {
                 DonorTransactionEntry.COLUMN_PRICE + " INTEGER NOT NULL, " +
                 DonorTransactionEntry.COLUMN_TRANSACTION_DATE + " INTEGER NOT NULL, " +
                 " FOREIGN KEY (" + DonorTransactionEntry.COLUMN_DONOR_KEY + ") REFERENCES " +
-                DonorEntry.TABLE_NAME + " (" + DonorEntry._ID + ") ON CONFLICT REPLACE);";
+                DonorEntry.TABLE_NAME + " (" + DonorEntry._ID + "));";
 
         final String SQL_CREATE_RECEIVER_TRANSACTION_TABLE = "CREATE TABLE " + ReceiverTransactionEntry.TABLE_NAME + " (" +
                 ReceiverTransactionEntry._ID + " INTEGER PRIMARY KEY, " +
@@ -55,7 +55,7 @@ public class BloodBankDbHelper extends SQLiteOpenHelper {
                 ReceiverTransactionEntry.COLUMN_PRICE + " INTEGER NOT NULL, " +
                 ReceiverTransactionEntry.COLUMN_TRANSACTION_DATE + " INTEGER NOT NULL, " +
                 " FOREIGN KEY (" + ReceiverTransactionEntry.COLUMN_RECEIVER_KEY + ") REFERENCES " +
-                ReceiverEntry.TABLE_NAME + " (" + ReceiverEntry._ID + ") ON CONFLICT REPLACE);";
+                ReceiverEntry.TABLE_NAME + " (" + ReceiverEntry._ID + "));";
 
         sqLiteDatabase.execSQL(SQL_CREATE_DONOR_TABLE);
         sqLiteDatabase.execSQL(SQL_CREATE_RECEIVER_TABLE);
