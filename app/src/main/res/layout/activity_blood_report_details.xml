@@ -1,357 +1,264 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true"
     xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <RelativeLayout
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/tv_month"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:text="TextView"
-        android:textSize="36sp" />
-
-    <ImageView
-        android:id="@+id/iv_in_apos"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/tv_month"
-
-        app:srcCompat="@drawable/down" />
-
-    <TextView
-        android:id="@+id/tv_in_apos"
-        android:layout_width="340dp"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:padding="11dp"
-       android:layout_below="@+id/tv_month"
-        android:layout_toRightOf="@+id/iv_in_apos"
-        />
-
-
-
-
-
-
-
-    <ImageView
-        android:id="@+id/iv_out_apos"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/iv_in_apos"
-
-        app:srcCompat="@drawable/up" />
-
-    <TextView
-        android:id="@+id/tv_out_apos"
-        android:layout_width="340dp"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:padding="11dp"
-        android:layout_below="@+id/tv_in_apos"
-        android:layout_toRightOf="@+id/iv_out_apos"
-         />
-
-
-
-
-    <ImageView
-        android:id="@+id/iv_in_aneg"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/iv_out_apos"
-
-        app:srcCompat="@drawable/down" />
-
-    <TextView
-        android:id="@+id/tv_in_aneg"
-        android:layout_width="340dp"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:padding="11dp"
-        android:layout_below="@+id/tv_out_apos"
-        android:layout_toRightOf="@+id/iv_in_aneg"
-         />
-
-    <ImageView
-        android:id="@+id/iv_out_aneg"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/iv_in_aneg"
-
-        app:srcCompat="@drawable/up" />
-
-    <TextView
-        android:id="@+id/tv_out_aneg"
-        android:layout_width="340dp"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:padding="11dp"
-        android:layout_below="@+id/tv_in_aneg"
-        android:layout_toRightOf="@+id/iv_out_aneg"
-        />
-
-
-
-
-
-
-
-    <ImageView
-        android:id="@+id/iv_in_bpos"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/iv_out_aneg"
-        app:srcCompat="@drawable/down" />
-
-    <TextView
-        android:id="@+id/tv_in_bpos"
-        android:layout_width="340dp"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:padding="11dp"
-        android:layout_above="@+id/tv_out_bpos"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <ImageView
-        android:id="@+id/iv_out_bpos"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-       android:layout_below="@+id/iv_in_bpos"
-
-        app:srcCompat="@drawable/up" />
-
-    <TextView
-        android:id="@+id/tv_out_bpos"
-        android:layout_width="340dp"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:padding="11dp"
-        android:layout_below="@+id/iv_in_bpos"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-
-
-
-    <ImageView
-        android:id="@+id/iv_in_bneg"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/iv_out_bpos"
-        app:srcCompat="@drawable/down" />
-
-    <TextView
-        android:id="@+id/tv_in_bneg"
-        android:layout_width="340dp"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:padding="11dp"
-        android:layout_below="@+id/tv_out_bpos"
-        android:layout_above="@+id/iv_out_bneg"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <ImageView
-        android:id="@+id/iv_out_bneg"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/iv_in_bneg"
-
-        app:srcCompat="@drawable/up" />
-
-    <TextView
-        android:id="@+id/tv_out_bneg"
-        android:layout_width="340dp"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:padding="11dp"
-        android:layout_below="@+id/tv_in_bneg"
-        android:layout_alignLeft="@+id/tv_in_bneg"
-        android:layout_alignStart="@+id/tv_in_bneg" />
-
-
-
-
-    <ImageView
-        android:id="@+id/iv_in_opos"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/iv_out_bneg"
-        app:srcCompat="@drawable/down" />
-
-
-
-
-
-    <TextView
-        android:id="@+id/tv_in_opos"
-        android:layout_width="340dp"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:padding="11dp"
-        android:layout_below="@+id/tv_out_bneg"
-        android:layout_toRightOf="@+id/iv_in_opos"
-         />
-
-    <ImageView
-        android:id="@+id/iv_out_opos"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/iv_in_opos"
-
-        app:srcCompat="@drawable/up" />
-
-    <TextView
-        android:id="@+id/tv_out_opos"
-        android:layout_width="340dp"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:padding="11dp"
-        android:layout_below="@+id/tv_in_opos"
-        android:layout_toRightOf="@+id/iv_out_opos"
-         />
-
-
-
-
-    <ImageView
-        android:id="@+id/iv_in_oneg"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/iv_out_opos"
-        app:srcCompat="@drawable/down" />
-
-    <TextView
-        android:id="@+id/tv_in_oneg"
-        android:layout_width="340dp"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:padding="11dp"
-       android:layout_below="@+id/tv_out_opos"
-        android:layout_toRightOf="@+id/iv_in_oneg"
-        />
-
-    <ImageView
-        android:id="@+id/iv_out_oneg"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/iv_in_oneg"
-
-        app:srcCompat="@drawable/up" />
-
-    <TextView
-        android:id="@+id/tv_out_oneg"
-        android:layout_width="340dp"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:padding="11dp"
-       android:layout_below="@+id/tv_in_oneg"
-        android:layout_toRightOf="@+id/iv_out_oneg"
-        />
-
-
-
-
-    <ImageView
-        android:id="@+id/iv_in_abpos"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/iv_out_oneg"
-        app:srcCompat="@drawable/down" />
-
-    <TextView
-        android:id="@+id/tv_in_abpos"
-        android:layout_width="340dp"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:padding="11dp"
-        android:layout_below="@+id/tv_out_oneg"
-        android:layout_toRightOf="@+id/iv_in_abpos"
-         />
-
-    <ImageView
-        android:id="@+id/iv_out_abpos"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/iv_in_abpos"
-
-        app:srcCompat="@drawable/up" />
-
-    <TextView
-        android:id="@+id/tv_out_abpos"
-        android:layout_width="340dp"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:padding="11dp"
-        android:layout_below="@+id/tv_in_abpos"
-        android:layout_toRightOf="@+id/iv_out_abpos"
-
-
-        />
-
-
-
-
-    <ImageView
-        android:id="@+id/iv_in_abneg"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/iv_out_abpos"
-        app:srcCompat="@drawable/down" />
-
-    <TextView
-        android:id="@+id/tv_in_abneg"
-        android:layout_width="340dp"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:padding="11dp"
-        android:layout_below="@+id/tv_out_abpos"
-        android:layout_toRightOf="@+id/iv_in_abneg"
-       />
-
-    <ImageView
-        android:id="@+id/iv_out_abneg"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/iv_in_abneg"
-
-        app:srcCompat="@drawable/up" />
-
-    <TextView
-        android:id="@+id/tv_out_abneg"
-        android:layout_width="340dp"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:padding="11dp"
-       android:layout_below="@+id/tv_in_abneg"
-        android:layout_toRightOf="@+id/iv_out_abneg"
-        />
-
-
-
-
-
-
-
-
-
-
-</RelativeLayout>
+        android:layout_height="match_parent"
+        android:stretchColumns="1">
+
+        <TableRow>
+            <TextView
+                android:text="Blood Group"
+                android:gravity="left"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+
+                android:padding="5dp" />
+            <TextView
+
+                android:text="Received"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="5dp" />
+            <TextView
+
+                android:text="Distributed"
+                android:gravity="right"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:padding="5dp" />
+        </TableRow>
+        <View
+            android:layout_height="2dip"
+            android:background="#FF909090" />
+
+
+        <TableRow>
+            <TextView
+                android:layout_gravity="left"
+                android:text="A +ve"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:paddingBottom="10dp"
+                android:id="@+id/tv_apos"
+                android:padding="3dip" />
+            <TextView
+                android:gravity="center"
+                android:text=""
+                android:id="@+id/tv_aposin"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+            <TextView
+                android:text=""
+                android:gravity="right"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/tv_aposout"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+        </TableRow>
+
+
+        <TableRow>
+            <TextView
+                android:layout_gravity="left"
+                android:text="A -ve"
+                android:id="@+id/tv_aneg"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+            <TextView
+                android:gravity="center"
+                android:text=""
+                android:id="@+id/tv_anegin"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+            <TextView
+                android:text=""
+                android:gravity="right"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/tv_anegout"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+        </TableRow>
+
+
+        <TableRow>
+            <TextView
+                android:layout_gravity="left"
+                android:text="B +ve"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/tv_bpos"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+            <TextView
+                android:gravity="center"
+                android:text=""
+                android:id="@+id/tv_bposin"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+            <TextView
+                android:text=""
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/tv_bposout"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:gravity="right"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_gravity="left"
+                android:text="B -ve"
+                android:id="@+id/tv_bneg"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+            <TextView
+                android:gravity="center"
+                android:text=""
+                android:id="@+id/tv_bnedin"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+            <TextView
+                android:text=""
+                android:gravity="right"
+                android:id="@+id/tv_bnegout"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_gravity="left"
+                android:text="AB +ve"
+                android:id="@+id/tv_abpos"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+            <TextView
+                android:gravity="center"
+                android:text=""
+                android:id="@+id/tv_abposin"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+            <TextView
+                android:text=""
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="right"
+                android:id="@+id/tv_abposout"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_gravity="left"
+                android:text="AB -ve"
+                android:id="@+id/tv_abneg"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+            <TextView
+                android:gravity="center"
+                android:text=""
+                android:id="@+id/tv_abnegin"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+            <TextView
+                android:text=""
+                android:gravity="right"
+                android:id="@+id/tv_abnegout"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_gravity="left"
+                android:text="O +ve"
+                android:id="@+id/tv_opos"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+            <TextView
+                android:gravity="center"
+                android:text=""
+                android:id="@+id/tv_oposin"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+            <TextView
+                android:text=""
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="right"
+                android:id="@+id/tv_oposout"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_gravity="left"
+                android:text="O -ve"
+                android:id="@+id/tv_0neg"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+            <TextView
+                android:gravity="center"
+                android:text=""
+                android:id="@+id/tv_ogenin"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+            <TextView
+                android:text=""
+                android:gravity="right"
+                android:id="@+id/tv_onegout"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+        </TableRow>
+
+
+    </TableLayout>
 </ScrollView>
