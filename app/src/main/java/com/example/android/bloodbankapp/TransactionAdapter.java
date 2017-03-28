@@ -8,8 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.android.bloodbankapp.data.BloodBankContract;
-
 /**
  * Created by shubham on 22/3/17.
  */
@@ -45,10 +43,10 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
             return;
         }
         //Get data from cursor
-        String donorKey = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorTransactionEntry.COLUMN_DONOR_KEY));
-        String quantity = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorTransactionEntry.COLUMN_QUANTITY));
-        String price = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorTransactionEntry.COLUMN_PRICE));
-        String date = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorTransactionEntry.COLUMN_TRANSACTION_DATE));
+//        String donorKey = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorTransactionEntry.COLUMN_DONOR_KEY));
+//        String quantity = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorTransactionEntry.COLUMN_QUANTITY));
+//        String price = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorTransactionEntry.COLUMN_PRICE));
+//        String date = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorTransactionEntry.COLUMN_TRANSACTION_DATE));
     }
 
     @Override

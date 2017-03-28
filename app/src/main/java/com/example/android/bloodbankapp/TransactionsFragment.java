@@ -52,13 +52,13 @@ public class TransactionsFragment extends Fragment implements TransactionAdapter
     private Cursor getAllTransactions() {
         //Query for retrieving all transactions (modification required)
         return mDb.query(
-                BloodBankContract.DonorTransactionEntry.TABLE_NAME,
+                BloodBankContract.DonorEntry.TABLE_NAME,
                 null,
                 null,
                 null,
                 null,
                 null,
-                BloodBankContract.DonorTransactionEntry.COLUMN_TRANSACTION_DATE
+                null
         );
     }
 }
