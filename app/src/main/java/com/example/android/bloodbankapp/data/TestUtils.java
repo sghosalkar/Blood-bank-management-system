@@ -4,6 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+
+import com.example.android.bloodbankapp.TransactionAdapter;
 
 /**
  * Created by shubham on 28/3/17.
@@ -11,9 +14,12 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class TestUtils {
 
+    private static final String LOG_TAG = TestUtils.class.getSimpleName();
+
     public static void insertFakeData(SQLiteDatabase db) {
 
         if(db == null) {
+            Log.d(LOG_TAG, "No database found");
             return;
         }
         ContentValues contentValues = new ContentValues();
@@ -42,42 +48,41 @@ public class TestUtils {
             db.beginTransaction();
             db.delete(BloodBankContract.DateEntry.TABLE_NAME, null, null);
             for(int i = 0; i < 3; i++) {
-                contentValues.put(BloodBankContract.DateEntry.COLUMN_DAY, dateFakeData[i][0]);
-                contentValues.put(BloodBankContract.DateEntry.COLUMN_DAY, dateFakeData[i][1]);
-                contentValues.put(BloodBankContract.DateEntry.COLUMN_DAY, dateFakeData[i][2]);
+                contentValues.put(BloodBankContract.DateEntry.COLUMN_DAY, Integer.parseInt(dateFakeData[i][0]));
+                contentValues.put(BloodBankContract.DateEntry.COLUMN_MONTH, Integer.parseInt(dateFakeData[i][1]));
+                contentValues.put(BloodBankContract.DateEntry.COLUMN_YEAR, Integer.parseInt(dateFakeData[i][2]));
                 db.insert(BloodBankContract.DateEntry.TABLE_NAME, null, contentValues);
+                contentValues.clear();
             }
             for(int i = 0; i < 5; i++) {
                 contentValues.put(BloodBankContract.DonorEntry.COLUMN_NAME, donorFakeData[i][0]);
                 contentValues.put(BloodBankContract.DonorEntry.COLUMN_CONTACT_NO, donorFakeData[i][1]);
                 contentValues.put(BloodBankContract.DonorEntry.COLUMN_BLOOD_GROUP, donorFakeData[i][2]);
-                contentValues.put(BloodBankContract.DonorEntry.COLUMN_QUANTITY, donorFakeData[i][3]);
-                contentValues.put(BloodBankContract.DonorEntry.COLUMN_PRICE, donorFakeData[i][4]);
-                contentValues.put(BloodBankContract.DonorEntry.COLUMN_DATE_KEY, donorFakeData[i][5]);
+                contentValues.put(BloodBankContract.DonorEntry.COLUMN_QUANTITY, Integer.parseInt(donorFakeData[i][3]));
+                contentValues.put(BloodBankContract.DonorEntry.COLUMN_PRICE, Integer.parseInt(donorFakeData[i][4]));
+                contentValues.put(BloodBankContract.DonorEntry.COLUMN_DATE_KEY, Integer.parseInt(donorFakeData[i][5]));
                 db.insert(BloodBankContract.DonorEntry.TABLE_NAME, null, contentValues);
+                contentValues.clear();
             }
 
             for(int i = 0; i < 5; i++) {
                 contentValues.put(BloodBankContract.ReceiverEntry.COLUMN_NAME, receiverFakeData[i][0]);
                 contentValues.put(BloodBankContract.ReceiverEntry.COLUMN_CONTACT_NO, receiverFakeData[i][1]);
                 contentValues.put(BloodBankContract.ReceiverEntry.COLUMN_BLOOD_GROUP, receiverFakeData[i][2]);
-                contentValues.put(BloodBankContract.ReceiverEntry.COLUMN_QUANTITY, receiverFakeData[i][3]);
-                contentValues.put(BloodBankContract.ReceiverEntry.COLUMN_PRICE, receiverFakeData[i][4]);
-                contentValues.put(BloodBankContract.ReceiverEntry.COLUMN_DATE_KEY, receiverFakeData[i][5]);
+                contentValues.put(BloodBankContract.ReceiverEntry.COLUMN_QUANTITY, Integer.parseInt(receiverFakeData[i][3]));
+                contentValues.put(BloodBankContract.ReceiverEntry.COLUMN_PRICE, Integer.parseInt(receiverFakeData[i][4]));
+                contentValues.put(BloodBankContract.ReceiverEntry.COLUMN_DATE_KEY, Integer.parseInt(receiverFakeData[i][5]));
                 db.insert(BloodBankContract.ReceiverEntry.TABLE_NAME, null, contentValues);
+                contentValues.clear();
             }
             db.setTransactionSuccessful();
         }
         catch (SQLException e) {
-
+            Log.d(LOG_TAG, "Check TestUtils file.");
         }
         finally {
             db.endTransaction();
         }
-
-
-
-
     }
 
 }

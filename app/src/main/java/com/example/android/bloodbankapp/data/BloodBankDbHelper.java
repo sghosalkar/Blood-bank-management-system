@@ -3,7 +3,9 @@ package com.example.android.bloodbankapp.data;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
+import com.example.android.bloodbankapp.TransactionAdapter;
 import com.example.android.bloodbankapp.data.BloodBankContract.DateEntry;
 import com.example.android.bloodbankapp.data.BloodBankContract.DonorEntry;
 import com.example.android.bloodbankapp.data.BloodBankContract.ReceiverEntry;
@@ -12,6 +14,8 @@ import com.example.android.bloodbankapp.data.BloodBankContract.ReceiverEntry;
  */
 
 public class BloodBankDbHelper extends SQLiteOpenHelper {
+
+    private static final String LOG_TAG = BloodBankDbHelper.class.getSimpleName();
 
     private static final int DATABASE_VERSION = 1;
 
@@ -57,13 +61,14 @@ public class BloodBankDbHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(SQL_CREATE_DATE_TABLE);
         sqLiteDatabase.execSQL(SQL_CREATE_DONOR_TABLE);
         sqLiteDatabase.execSQL(SQL_CREATE_RECEIVER_TABLE);
+        Log.d(LOG_TAG ,"Tables created");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DonorEntry.TABLE_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + ReceiverEntry.TABLE_NAME);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS" + DateEntry.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DateEntry.TABLE_NAME);
         onCreate(sqLiteDatabase);
     }
 }

@@ -8,13 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.android.bloodbankapp.data.BloodBankContract;
+
 /**
  * Created by shubham on 22/3/17.
  */
 
 public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.TransactionViewHolder>{
 
-    private static final String TAG = TransactionAdapter.class.getSimpleName();
+    private static final String LOG_TAG = TransactionAdapter.class.getSimpleName();
 
     private Cursor mCursor;
 
@@ -38,21 +40,13 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
     public void onBindViewHolder(TransactionAdapter.TransactionViewHolder holder, int position) {
         //check if cursor is empty
         if (!mCursor.moveToPosition(position)) {
-            //bind dummy data
-            holder.bind(position);
             return;
         }
-        //Get data from cursor
-//        String donorKey = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorTransactionEntry.COLUMN_DONOR_KEY));
-//        String quantity = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorTransactionEntry.COLUMN_QUANTITY));
-//        String price = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorTransactionEntry.COLUMN_PRICE));
-//        String date = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorTransactionEntry.COLUMN_TRANSACTION_DATE));
+        holder.bind(position);
     }
 
     @Override
     public int getItemCount() {
-        if(mCursor.getCount() == 0)
-            return 5;
         return mCursor.getCount();
     }
 
@@ -72,12 +66,21 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
             itemView.setOnClickListener(this);
         }
 
-        void bind(int listIndex) {
-            //Dummy data
-            nameView.setText("Mogambo khush hua");
-            typeView.setText("Donor");
-            bloodGroupView.setText("O+");
-            quantityView.setText("300 mL");
+        void bind(int position) {
+            //Get data from cursor
+            String name = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorEntry.COLUMN_NAME));
+            String contactNo = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorEntry.COLUMN_CONTACT_NO));
+            String bloodGroup = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorEntry.COLUMN_BLOOD_GROUP));
+            String quantity = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorEntry.COLUMN_QUANTITY));
+            String price = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorEntry.COLUMN_PRICE));
+            String dateKey = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorEntry.COLUMN_DATE_KEY));
+//            String day = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DateEntry.COLUMN_DAY));
+//            String month = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DateEntry.COLUMN_MONTH));
+//            String year = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DateEntry.COLUMN_YEAR));
+            nameView.setText(name);
+            typeView.setText(contactNo);
+            bloodGroupView.setText(bloodGroup);
+            quantityView.setText(quantity);
         }
 
         @Override
