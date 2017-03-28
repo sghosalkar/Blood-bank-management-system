@@ -37,7 +37,7 @@ public class TransactionsFragment extends Fragment implements TransactionAdapter
         //Fetch data from database
         BloodBankDbHelper dbHelper = new BloodBankDbHelper(this.getContext());
         mDb = dbHelper.getWritableDatabase();
-        //TestUtils.insertFakeData(mDb);
+        TestUtils.insertFakeData(mDb);
         Cursor cursor = getAllTransactions();
         mTransactionAdapter = new TransactionAdapter(cursor, this);
         mTransactionList.setAdapter(mTransactionAdapter);
