@@ -10,4 +10,8 @@
     <string name="title_status">Status</string>
     <string name="title_reports">Reports</string>
     <string name="title_transaction_details">Transaction Details</string>
+
+    <string name="actor_type">type</string>
+    <string name="actor_type_donor">Donor</string>
+    <string name="actor_type_receiver">Receiver</string>
 </resources>

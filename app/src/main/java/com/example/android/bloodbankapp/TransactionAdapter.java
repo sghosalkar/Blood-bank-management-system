@@ -74,11 +74,12 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
             String quantity = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorEntry.COLUMN_QUANTITY));
             String price = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorEntry.COLUMN_PRICE));
             String dateKey = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorEntry.COLUMN_DATE_KEY));
+            String type = mCursor.getString(mCursor.getColumnIndex("type"));
 //            String day = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DateEntry.COLUMN_DAY));
 //            String month = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DateEntry.COLUMN_MONTH));
 //            String year = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DateEntry.COLUMN_YEAR));
             nameView.setText(name);
-            typeView.setText(contactNo);
+            typeView.setText(type);
             bloodGroupView.setText(bloodGroup);
             quantityView.setText(quantity);
         }

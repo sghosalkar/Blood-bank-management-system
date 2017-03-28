@@ -1,8 +1,10 @@
 package com.example.android.bloodbankapp;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteQueryBuilder;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,12 +17,14 @@ import com.example.android.bloodbankapp.data.BloodBankContract;
 import com.example.android.bloodbankapp.data.BloodBankDbHelper;
 import com.example.android.bloodbankapp.data.TestUtils;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class TransactionsFragment extends Fragment implements TransactionAdapter.ListItemClickListener {
 
     public static final String LOG_TAG = TransactionsFragment.class.getSimpleName();
     private TransactionAdapter mTransactionAdapter;
     private RecyclerView mTransactionList;
-
     SQLiteDatabase mDb;
 
     @Override
@@ -52,14 +56,82 @@ public class TransactionsFragment extends Fragment implements TransactionAdapter
     }
 
     private Cursor getAllTransactions() {
-        //Query for retrieving all transactions (modification required)
-        return mDb.query(
-                BloodBankContract.DonorEntry.TABLE_NAME,
+        //Subquery for donor
+        SQLiteQueryBuilder donorQueryBuilder = new SQLiteQueryBuilder();
+        donorQueryBuilder.setTables(BloodBankContract.DonorEntry.TABLE_NAME);
+        String[] donorUnionColumns = {
+                BloodBankContract.DonorEntry._ID,
+                BloodBankContract.DonorEntry.COLUMN_NAME,
+                BloodBankContract.DonorEntry.COLUMN_CONTACT_NO,
+                BloodBankContract.DonorEntry.COLUMN_BLOOD_GROUP,
+                BloodBankContract.DonorEntry.COLUMN_QUANTITY,
+                BloodBankContract.DonorEntry.COLUMN_PRICE,
+                BloodBankContract.DonorEntry.COLUMN_DATE_KEY,
+                getActivity().getString(R.string.actor_type)
+        };
+        Set<String> donorColumnsPresentInTable = new HashSet<>();
+        donorColumnsPresentInTable.add(BloodBankContract.DonorEntry._ID);
+        donorColumnsPresentInTable.add(BloodBankContract.DonorEntry.COLUMN_NAME);
+        donorColumnsPresentInTable.add(BloodBankContract.DonorEntry.COLUMN_CONTACT_NO);
+        donorColumnsPresentInTable.add(BloodBankContract.DonorEntry.COLUMN_BLOOD_GROUP);
+        donorColumnsPresentInTable.add(BloodBankContract.DonorEntry.COLUMN_QUANTITY);
+        donorColumnsPresentInTable.add(BloodBankContract.DonorEntry.COLUMN_PRICE);
+        donorColumnsPresentInTable.add(BloodBankContract.DonorEntry.COLUMN_DATE_KEY);
+        donorColumnsPresentInTable.add(getActivity().getString(R.string.actor_type));
+        String donorTableQuery = donorQueryBuilder.buildUnionSubQuery(
+                getActivity().getString(R.string.actor_type),
+                donorUnionColumns,
+                donorColumnsPresentInTable,
+                0,
+                getActivity().getString(R.string.actor_type_donor),
                 null,
                 null,
+                null
+        );
+
+        //Sub query for receiver
+        SQLiteQueryBuilder receiverQueryBuilder = new SQLiteQueryBuilder();
+        receiverQueryBuilder.setTables(BloodBankContract.ReceiverEntry.TABLE_NAME);
+        String[] receiverUnionColumns = {
+                BloodBankContract.ReceiverEntry._ID,
+                BloodBankContract.ReceiverEntry.COLUMN_NAME,
+                BloodBankContract.ReceiverEntry.COLUMN_CONTACT_NO,
+                BloodBankContract.ReceiverEntry.COLUMN_BLOOD_GROUP,
+                BloodBankContract.ReceiverEntry.COLUMN_QUANTITY,
+                BloodBankContract.ReceiverEntry.COLUMN_PRICE,
+                BloodBankContract.ReceiverEntry.COLUMN_DATE_KEY,
+                getActivity().getString(R.string.actor_type)
+        };
+        Set<String> receiverColumnsPresentInTable = new HashSet<>();
+        receiverColumnsPresentInTable.add(BloodBankContract.ReceiverEntry._ID);
+        receiverColumnsPresentInTable.add(BloodBankContract.ReceiverEntry.COLUMN_NAME);
+        receiverColumnsPresentInTable.add(BloodBankContract.ReceiverEntry.COLUMN_CONTACT_NO);
+        receiverColumnsPresentInTable.add(BloodBankContract.ReceiverEntry.COLUMN_BLOOD_GROUP);
+        receiverColumnsPresentInTable.add(BloodBankContract.ReceiverEntry.COLUMN_QUANTITY);
+        receiverColumnsPresentInTable.add(BloodBankContract.ReceiverEntry.COLUMN_PRICE);
+        receiverColumnsPresentInTable.add(BloodBankContract.ReceiverEntry.COLUMN_DATE_KEY);
+        receiverColumnsPresentInTable.add(getActivity().getString(R.string.actor_type));
+        String receiverTableQuery = receiverQueryBuilder.buildUnionSubQuery(
+                getActivity().getString(R.string.actor_type),
+                receiverUnionColumns,
+                receiverColumnsPresentInTable,
+                0,
+                getActivity().getString(R.string.actor_type_receiver),
                 null,
                 null,
-                null,
+                null
+        );
+
+        String[] subQueries = {
+                donorTableQuery,
+                receiverTableQuery
+        };
+
+        SQLiteQueryBuilder sqLiteQueryBuilder = new SQLiteQueryBuilder();
+        String unionQuery = sqLiteQueryBuilder.buildUnionQuery(subQueries, null, null);
+
+        return mDb.rawQuery(
+                unionQuery,
                 null
         );
     }
