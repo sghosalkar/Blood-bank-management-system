@@ -61,10 +61,10 @@ public class ReportAdapter extends ArrayAdapter {
             row = inflater.inflate(R.layout.row_layout, parent, false);
             holder = new ReportHolder();
             holder.month = (TextView) row.findViewById(R.id.tv_month);
-            holder.up = (ImageView) row.findViewById(R.id.iv_out);
-            holder.bldqtyin = (TextView) row.findViewById(R.id.tv_in);
-            holder.down = (ImageView) row.findViewById(R.id.iv_in);
-            holder.bldqtyout = (TextView) row.findViewById(R.id.tv_out);
+            holder.up = (ImageView) row.findViewById(R.id.iv_bldout);
+            holder.bldqtyin = (TextView) row.findViewById(R.id.tv_bldin);
+            holder.down = (ImageView) row.findViewById(R.id.iv_bldin);
+            holder.bldqtyout = (TextView) row.findViewById(R.id.tv_bldout);
             row.setTag(holder);
         }
         else{
