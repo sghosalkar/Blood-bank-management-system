@@ -1,4 +1,4 @@
-package com.example.android.bloodbankapp.Utility;
+package com.example.android.bloodbankapp.utility;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;

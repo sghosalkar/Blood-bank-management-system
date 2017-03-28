@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.example.android.bloodbankapp.data.BloodBankContract;
 import com.example.android.bloodbankapp.data.BloodBankDbHelper;
+import com.example.android.bloodbankapp.data.TestUtils;
 
 public class TransactionsFragment extends Fragment implements TransactionAdapter.ListItemClickListener {
 
@@ -36,6 +37,7 @@ public class TransactionsFragment extends Fragment implements TransactionAdapter
         //Fetch data from database
         BloodBankDbHelper dbHelper = new BloodBankDbHelper(this.getContext());
         mDb = dbHelper.getWritableDatabase();
+        //TestUtils.insertFakeData(mDb);
         Cursor cursor = getAllTransactions();
         mTransactionAdapter = new TransactionAdapter(cursor, this);
         mTransactionList.setAdapter(mTransactionAdapter);

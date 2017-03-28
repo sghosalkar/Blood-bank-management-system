@@ -61,10 +61,10 @@ public class ReportAdapter extends ArrayAdapter {
             row = inflater.inflate(R.layout.row_layout, parent, false);
             holder = new ReportHolder();
             holder.month = (TextView) row.findViewById(R.id.tv_month);
-            holder.up = (ImageView) row.findViewById(R.id.iv_out);
-            holder.bldqtyin = (TextView) row.findViewById(R.id.tv_in);
-            holder.down = (ImageView) row.findViewById(R.id.iv_in);
-            holder.bldqtyout = (TextView) row.findViewById(R.id.tv_out);
+//            holder.up = (ImageView) row.findViewById(R.id.iv_out);
+//            holder.bldqtyin = (TextView) row.findViewById(R.id.tv_in);
+//            holder.down = (ImageView) row.findViewById(R.id.iv_in);
+//            holder.bldqtyout = (TextView) row.findViewById(R.id.tv_out);
             row.setTag(holder);
         }
         else{
@@ -74,10 +74,10 @@ public class ReportAdapter extends ArrayAdapter {
         }
         Report r= (Report) getItem(position);
         holder.month.setText(r.getMonth());
-        holder.down.setImageResource(r.getBldin());
-        holder.bldqtyin.setText(r.getBldqtyin());
-        holder.up.setImageResource(r.getBldout());
-        holder.bldqtyout.setText(r.getBldqtyout());
+        //holder.down.setImageResource(r.getBldin());
+        //holder.bldqtyin.setText(r.getBldqtyin());
+        //holder.up.setImageResource(r.getBldout());
+        //holder.bldqtyout.setText(r.getBldqtyout());
 
         return row;
     }
