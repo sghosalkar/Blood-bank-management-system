@@ -9,4 +9,10 @@
     <string name="action_sample_login">Sample Login</string>
     <string name="title_status">Status</string>
     <string name="title_reports">Reports</string>
+    <string name="title_donor">Donor</string>
+    <string name="title_receiver">Receiver</string>
+    <string name="spinner_title">Blood Group</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
