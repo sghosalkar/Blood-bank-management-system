@@ -1,11 +1,14 @@
 package com.example.android.bloodbankapp;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.example.android.bloodbankapp.data.BloodBankContract;
 
 /**
  * Created by shubham on 22/3/17.
@@ -13,10 +16,15 @@ import android.widget.TextView;
 
 public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.TransactionViewHolder>{
 
-    private int mNumberItems;
+    private static final String LOG_TAG = TransactionAdapter.class.getSimpleName();
 
-    public TransactionAdapter(int numberOfItems) {
-        mNumberItems = numberOfItems;
+    private Cursor mCursor;
+
+    final private ListItemClickListener mOnClickListener;
+
+    public TransactionAdapter(Cursor cursor, ListItemClickListener listener) {
+        this.mCursor = cursor;
+        mOnClickListener = listener;
     }
 
     @Override
@@ -30,15 +38,20 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
 
     @Override
     public void onBindViewHolder(TransactionAdapter.TransactionViewHolder holder, int position) {
+        //check if cursor is empty
+        if (!mCursor.moveToPosition(position)) {
+            return;
+        }
         holder.bind(position);
     }
 
     @Override
     public int getItemCount() {
-        return mNumberItems;
+        return mCursor.getCount();
     }
 
-    class TransactionViewHolder extends RecyclerView.ViewHolder {
+    class TransactionViewHolder extends RecyclerView.ViewHolder
+            implements View.OnClickListener {
         public final TextView nameView;
         public final TextView typeView;
         public final TextView bloodGroupView;
@@ -50,13 +63,37 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
             typeView = (TextView) view.findViewById(R.id.list_item_type_textview);
             bloodGroupView = (TextView) view.findViewById(R.id.list_item_blood_group_textview);
             quantityView = (TextView) view.findViewById(R.id.list_item_quantity_textview);
+            itemView.setOnClickListener(this);
         }
 
-        void bind(int listIndex) {
-            nameView.setText("Mogambo khush hua");
-            typeView.setText("Donor");
-            bloodGroupView.setText("O+");
-            quantityView.setText("300 mL");
+        void bind(int position) {
+            //Get data from cursor
+            String name = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorEntry.COLUMN_NAME));
+            String contactNo = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorEntry.COLUMN_CONTACT_NO));
+            String bloodGroup = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorEntry.COLUMN_BLOOD_GROUP));
+            String quantity = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorEntry.COLUMN_QUANTITY));
+            String price = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorEntry.COLUMN_PRICE));
+            String dateKey = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorEntry.COLUMN_DATE_KEY));
+            String type = mCursor.getString(mCursor.getColumnIndex("type"));
+//            String day = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DateEntry.COLUMN_DAY));
+//            String month = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DateEntry.COLUMN_MONTH));
+//            String year = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DateEntry.COLUMN_YEAR));
+            nameView.setText(name);
+            typeView.setText(type);
+            bloodGroupView.setText(bloodGroup);
+            quantityView.setText(quantity);
         }
+
+        @Override
+        public void onClick(View view) {
+            //Get clicked position
+            int clickedPosition = getAdapterPosition();
+            //Set click listener on clicked position
+            mOnClickListener.onListItemClick(clickedPosition);
+        }
+    }
+
+    public interface ListItemClickListener {
+        void onListItemClick(int clickedItemIndex);
     }
 }

@@ -15,6 +15,7 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
 
     public PagerAdapter(FragmentManager fm, Context context) {
         super(fm);
+        //Get tab titles from array resource
         tabTitles = context.getResources().getStringArray(R.array.statistics_subtitle_array);
     }
 

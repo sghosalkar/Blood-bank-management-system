@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            //Select fragment to display depending on selected bottom navigation
             switch (item.getItemId()) {
                 case R.id.navigation_new_entry:
                     getSupportFragmentManager().beginTransaction().replace(R.id.content, new NewEntryFragment()).commit();
@@ -35,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //create bottom navigation view
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         View view = navigation.findViewById(R.id.navigation_new_entry);

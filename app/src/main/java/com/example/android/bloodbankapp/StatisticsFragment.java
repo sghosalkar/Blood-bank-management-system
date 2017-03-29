@@ -26,6 +26,7 @@ public class StatisticsFragment extends Fragment implements TabLayout.OnTabSelec
         PagerAdapter pagerAdapter = new PagerAdapter(getActivity().getSupportFragmentManager(), getContext());
         viewPager.setAdapter(pagerAdapter);
 
+        //Connect viewPager to tabLayout
         tabLayout.setupWithViewPager(viewPager);
 
         return rootView;
