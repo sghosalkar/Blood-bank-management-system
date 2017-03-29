@@ -3,4 +3,34 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <EditTextPreference
+        android:title="Set Minimum Value"
+        android:key="Set Minimum value"
+        android:hint="Set Minimum value"/>
+
+    <PreferenceScreen
+        android:key="About_us"
+        android:title="About Us"
+        android:persistent="false"
+        >
+        <Preference android:key="About_us"
+            android:title="About us"
+            android:summary=".
+"
+            android:persistent="true"/>
+        <Preference android:key="About_us"
+            android:title="Support"
+            android:summary="Display overall quantity of in and out flow of blood from blood bank of every month
+Detailed information of transactions of each blood type in that month.
+Put fetching from database to background thread.
+"
+            android:persistent="true"/><Preference android:key="About_us"
+        android:title="About US"
+        android:summary="Display overall quantity of in and out flow of blood from blood bank of every month
+Detailed information of transactions of each blood type in that month.
+Put fetching from database to background thread.
+"
+        android:persistent="true"/>
+    </PreferenceScreen>
 </PreferenceScreen>
