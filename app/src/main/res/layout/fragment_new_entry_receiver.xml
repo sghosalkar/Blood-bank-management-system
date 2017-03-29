@@ -1,0 +1,88 @@
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context="com.example.android.bloodbankapp.NewEntryReceiverFragment">
+
+<!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Receiver Form"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textColor="#876543"
+            />
+        <EditText
+            android:id="@+id/rname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:layout_marginTop="10dp"
+            />
+
+        <EditText
+            android:id="@+id/rphone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone"
+            android:inputType="phone"
+            android:layout_marginTop="10dp"
+            />
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/bg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/spinner_title"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            />
+        <Spinner
+            android:id="@+id/rbloodgroup"
+            android:layout_toRightOf="@+id/bg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:prompt="@string/spinner_title"
+            android:entries="@array/blood_group"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            />
+
+
+      </RelativeLayout>
+
+        <EditText
+            android:id="@+id/rquantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Quantity"
+            android:inputType="number"
+            android:layout_marginTop="10dp"
+            />
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Submit"
+            android:layout_gravity="right"
+            android:layout_marginLeft="10dp"
+            android:onClick="submit"
+            android:layout_marginRight="20dp"
+
+            />
+    </LinearLayout>
+
+</FrameLayout>

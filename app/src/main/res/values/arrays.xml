@@ -6,4 +6,21 @@
         <item>@string/title_reports</item>
     </string-array>
 
+    <string-array name="newentry_subtitle_array">
+        <item>@string/title_donor</item>
+        <item>@string/title_receiver</item>
+    </string-array>
+
+    <string-array name="blood_group">
+        <item>O+</item>
+        <item>O-</item>
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+    </string-array>
+
+
 </resources>

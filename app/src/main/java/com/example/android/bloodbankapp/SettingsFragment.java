@@ -2,7 +2,7 @@ package com.example.android.bloodbankapp;
 
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
-
+import android.view.MenuItem;
 
 
 public class SettingsFragment extends PreferenceFragment {
@@ -13,4 +13,5 @@ public class SettingsFragment extends PreferenceFragment {
 
         addPreferencesFromResource(R.xml.pref_general);
     }
+
 }

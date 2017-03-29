@@ -1,13 +1,26 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewEntryFragment">
+    tools:context=".NewEntryFragment"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/newentry_view_pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/title_new_entry" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <android.support.design.widget.TabLayout
+            android:id="@+id/newentry_tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="6dp"
+            android:minHeight="?attr/actionBarSize">
+
+        </android.support.design.widget.TabLayout>
+
+    </android.support.v4.view.ViewPager>
+
+</LinearLayout>
