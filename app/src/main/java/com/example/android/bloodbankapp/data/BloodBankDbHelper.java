@@ -7,8 +7,8 @@ import android.util.Log;
 
 import com.example.android.bloodbankapp.TransactionAdapter;
 import com.example.android.bloodbankapp.data.BloodBankContract.DateEntry;
-import com.example.android.bloodbankapp.data.BloodBankContract.DonorEntry;
-import com.example.android.bloodbankapp.data.BloodBankContract.ReceiverEntry;
+import com.example.android.bloodbankapp.data.BloodBankContract.TransactionEntry;
+import com.example.android.bloodbankapp.data.BloodBankContract.TransactionEntry;
 /**
  * Created by shubham on 17/3/17.
  */
@@ -36,38 +36,26 @@ public class BloodBankDbHelper extends SQLiteOpenHelper {
                 " );";
 
 
-        final String SQL_CREATE_DONOR_TABLE = "CREATE TABLE " + DonorEntry.TABLE_NAME + " (" +
-                DonorEntry._ID + " INTEGER PRIMARY KEY, " +
-                DonorEntry.COLUMN_NAME + " TEXT NOT NULL, " +
-                DonorEntry.COLUMN_CONTACT_NO + " TEXT UNIQUE NOT NULL, " +
-                DonorEntry.COLUMN_BLOOD_GROUP + " TEXT NOT NULL, " +
-                DonorEntry.COLUMN_QUANTITY + " INTEGER NOT NULL, " +
-                DonorEntry.COLUMN_PRICE + " INTEGER NOT NULL, " +
-                DonorEntry.COLUMN_DATE_KEY + " INTEGER NOT NULL, " +
-                " FOREIGN KEY (" + DonorEntry.COLUMN_DATE_KEY + ") REFERENCES " +
-                DateEntry.TABLE_NAME + " (" + DateEntry._ID + "));";
-
-        final String SQL_CREATE_RECEIVER_TABLE = "CREATE TABLE " + ReceiverEntry.TABLE_NAME + " (" +
-                ReceiverEntry._ID + " INTEGER PRIMARY KEY, " +
-                ReceiverEntry.COLUMN_NAME + " TEXT NOT NULL, " +
-                ReceiverEntry.COLUMN_CONTACT_NO + " TEXT UNIQUE NOT NULL, " +
-                ReceiverEntry.COLUMN_BLOOD_GROUP + " TEXT NOT NULL, " +
-                ReceiverEntry.COLUMN_QUANTITY + " INTEGER NOT NULL, " +
-                ReceiverEntry.COLUMN_PRICE + " INTEGER NOT NULL, " +
-                ReceiverEntry.COLUMN_DATE_KEY + " INTEGER NOT NULL, " +
-                " FOREIGN KEY (" + ReceiverEntry.COLUMN_DATE_KEY + ") REFERENCES " +
+        final String SQL_CREATE_TRANSACTION_TABLE = "CREATE TABLE " + TransactionEntry.TABLE_NAME + " (" +
+                TransactionEntry._ID + " INTEGER PRIMARY KEY, " +
+                TransactionEntry.COLUMN_NAME + " TEXT NOT NULL, " +
+                TransactionEntry.COLUMN_CONTACT_NO + " TEXT UNIQUE NOT NULL, " +
+                TransactionEntry.COLUMN_TYPE + " TEXT NOT NULL, " +
+                TransactionEntry.COLUMN_BLOOD_GROUP + " TEXT NOT NULL, " +
+                TransactionEntry.COLUMN_QUANTITY + " INTEGER NOT NULL, " +
+                TransactionEntry.COLUMN_PRICE + " INTEGER NOT NULL, " +
+                TransactionEntry.COLUMN_DATE_KEY + " INTEGER NOT NULL, " +
+                " FOREIGN KEY (" + TransactionEntry.COLUMN_DATE_KEY + ") REFERENCES " +
                 DateEntry.TABLE_NAME + " (" + DateEntry._ID + "));";
 
         sqLiteDatabase.execSQL(SQL_CREATE_DATE_TABLE);
-        sqLiteDatabase.execSQL(SQL_CREATE_DONOR_TABLE);
-        sqLiteDatabase.execSQL(SQL_CREATE_RECEIVER_TABLE);
+        sqLiteDatabase.execSQL(SQL_CREATE_TRANSACTION_TABLE);
         Log.d(LOG_TAG ,"Tables created");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DonorEntry.TABLE_NAME);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + ReceiverEntry.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TransactionEntry.TABLE_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DateEntry.TABLE_NAME);
         onCreate(sqLiteDatabase);
     }

@@ -68,13 +68,13 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
 
         void bind(int position) {
             //Get data from cursor
-            String name = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorEntry.COLUMN_NAME));
-            String contactNo = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorEntry.COLUMN_CONTACT_NO));
-            String bloodGroup = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorEntry.COLUMN_BLOOD_GROUP));
-            String quantity = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorEntry.COLUMN_QUANTITY));
-            String price = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorEntry.COLUMN_PRICE));
-            String dateKey = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DonorEntry.COLUMN_DATE_KEY));
-            String type = mCursor.getString(mCursor.getColumnIndex("type"));
+            String name = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.TransactionEntry.COLUMN_NAME));
+            String contactNo = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.TransactionEntry.COLUMN_CONTACT_NO));
+            String type = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.TransactionEntry.COLUMN_TYPE));
+            String bloodGroup = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.TransactionEntry.COLUMN_BLOOD_GROUP));
+            String quantity = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.TransactionEntry.COLUMN_QUANTITY));
+            String price = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.TransactionEntry.COLUMN_PRICE));
+            String dateKey = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.TransactionEntry.COLUMN_DATE_KEY));
 //            String day = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DateEntry.COLUMN_DAY));
 //            String month = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DateEntry.COLUMN_MONTH));
 //            String year = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DateEntry.COLUMN_YEAR));
