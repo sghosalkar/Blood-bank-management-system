@@ -22,7 +22,7 @@ tools:context="com.example.android.bloodbankapp.NewEntryReceiverFragment">
             android:textColor="#876543"
             />
         <EditText
-            android:id="@+id/rname"
+            android:id="@+id/et_rname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Name"
@@ -30,10 +30,10 @@ tools:context="com.example.android.bloodbankapp.NewEntryReceiverFragment">
             />
 
         <EditText
-            android:id="@+id/rphone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Phone"
+            android:id="@+id/et_rphone"
             android:inputType="phone"
             android:layout_marginTop="10dp"
             />
@@ -50,7 +50,7 @@ tools:context="com.example.android.bloodbankapp.NewEntryReceiverFragment">
             android:layout_marginTop="10dp"
             />
         <Spinner
-            android:id="@+id/rbloodgroup"
+            android:id="@+id/sp_rbldgrp"
             android:layout_toRightOf="@+id/bg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -64,14 +64,20 @@ tools:context="com.example.android.bloodbankapp.NewEntryReceiverFragment">
       </RelativeLayout>
 
         <EditText
-            android:id="@+id/rquantity"
+            android:id="@+id/et_rquantity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Quantity"
             android:inputType="number"
             android:layout_marginTop="10dp"
             />
-
+        <EditText
+            android:id="@+id/et_rprice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Price"
+            android:inputType="number" />
 
         <Button
             android:layout_width="wrap_content"
@@ -79,7 +85,7 @@ tools:context="com.example.android.bloodbankapp.NewEntryReceiverFragment">
             android:text="Submit"
             android:layout_gravity="right"
             android:layout_marginLeft="10dp"
-            android:onClick="submit"
+          android:id="@+id/btn_rsave"
             android:layout_marginRight="20dp"
 
             />

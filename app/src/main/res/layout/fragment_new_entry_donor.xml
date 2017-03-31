@@ -17,20 +17,20 @@ tools:context="com.example.android.bloodbankapp.NewEntryDonorFragment">
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             android:text="Donor Form"
+            android:id="@+id/tv_donorform"
             android:textColor="#876543"
             android:textSize="25dp"
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/dname"
+            android:id="@+id/et_dname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:layout_marginTop="10dp"
             android:hint="Name" />
 
         <EditText
-            android:id="@+id/dphone"
+            android:id="@+id/et_dphone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -42,7 +42,7 @@ tools:context="com.example.android.bloodbankapp.NewEntryDonorFragment">
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/bg"
+                android:id="@+id/tv_bg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -50,7 +50,7 @@ tools:context="com.example.android.bloodbankapp.NewEntryDonorFragment">
                 android:textSize="20dp" />
 
             <Spinner
-                android:id="@+id/rbloodgroup"
+                android:id="@+id/sp_bldgrp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -63,7 +63,7 @@ tools:context="com.example.android.bloodbankapp.NewEntryDonorFragment">
         </RelativeLayout>
 
         <EditText
-            android:id="@+id/dquantity"
+            android:id="@+id/et_dquantity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -71,7 +71,7 @@ tools:context="com.example.android.bloodbankapp.NewEntryDonorFragment">
             android:inputType="number" />
 
         <EditText
-            android:id="@+id/dprice"
+            android:id="@+id/et_dprice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -83,7 +83,7 @@ tools:context="com.example.android.bloodbankapp.NewEntryDonorFragment">
             android:layout_height="match_parent"
             android:layout_gravity="right"
             android:layout_marginRight="20dp"
-            android:onClick="submit"
+            android:id="@+id/btn_save"
             android:text="Save"
 
             />
