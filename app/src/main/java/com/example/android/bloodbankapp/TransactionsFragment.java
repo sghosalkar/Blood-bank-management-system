@@ -26,6 +26,7 @@ public class TransactionsFragment extends Fragment implements TransactionAdapter
     private TransactionAdapter mTransactionAdapter;
     private RecyclerView mTransactionList;
     SQLiteDatabase mDb;
+    Cursor mCursor;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,8 +43,8 @@ public class TransactionsFragment extends Fragment implements TransactionAdapter
         BloodBankDbHelper dbHelper = new BloodBankDbHelper(this.getContext());
         mDb = dbHelper.getWritableDatabase();
         TestUtils.insertFakeData(mDb);
-        Cursor cursor = getAllTransactions();
-        mTransactionAdapter = new TransactionAdapter(cursor, this);
+        mCursor = getAllTransactions();
+        mTransactionAdapter = new TransactionAdapter(mCursor, this);
         mTransactionList.setAdapter(mTransactionAdapter);
         return rootView;
     }
@@ -52,6 +53,9 @@ public class TransactionsFragment extends Fragment implements TransactionAdapter
     public void onListItemClick(int clickedItemIndex) {
         //handler for item click
         Intent intent = new Intent(getActivity(), TransactionDetailActivity.class);
+        mCursor.moveToPosition(clickedItemIndex);
+        int idAtPosition = mCursor.getInt(mCursor.getColumnIndex(BloodBankContract.TransactionEntry._ID));
+        intent.putExtra(getString(R.string.id_at_position), idAtPosition);
         startActivity(intent);
     }
 
