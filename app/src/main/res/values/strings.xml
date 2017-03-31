@@ -20,4 +20,5 @@
     <string name="actor_type">type</string>
     <string name="actor_type_donor">Donor</string>
     <string name="actor_type_receiver">Receiver</string>
+    <string name="id_at_position">id_at_position</string>
 </resources>
