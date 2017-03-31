@@ -34,3 +34,4 @@ public class NewEntryDonorFragment extends Fragment implements AdapterView.OnIte
 
     }
 }
+
