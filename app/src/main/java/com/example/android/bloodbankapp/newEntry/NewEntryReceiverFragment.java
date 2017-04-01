@@ -1,4 +1,4 @@
-package com.example.android.bloodbankapp;
+package com.example.android.bloodbankapp.newEntry;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -26,53 +25,49 @@ import java.util.Calendar;
  * Created by jaihi on 3/27/2017.
  */
 
-public class NewEntryDonorFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+public class NewEntryReceiverFragment extends Fragment {
 
-    EditText et_dname, et_dphoneno,et_dquantity,et_price;
-    Spinner sp_dbloodgroup;
-    Button btn_save;
+    EditText et_rname, et_rphoneno,et_rquantity,et_rprice;
+    Spinner sp_rdbloodgroup;
+    Button btn_rsave;
 
     SQLiteDatabase mdb;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        View view=inflater.inflate(R.layout.fragment_new_entry_receiver, container, false);
         // Inflate the layout for this fragment
-       View view= inflater.inflate(R.layout.fragment_new_entry_donor, container, false);
-        et_dname= (EditText) view.findViewById(R.id.et_dname);
-        et_dphoneno= (EditText) view.findViewById(R.id.et_dphone);
-        et_dquantity= (EditText) view.findViewById(R.id.et_dquantity);
-        et_price= (EditText) view.findViewById(R.id.et_dprice);
-        sp_dbloodgroup= (Spinner) view.findViewById(R.id.sp_bldgrp);
-        btn_save= (Button) view.findViewById(R.id.btn_save);
-        btn_save.setOnClickListener(new View.OnClickListener() {
+        et_rname= (EditText) view.findViewById(R.id.et_rname);
+        et_rphoneno= (EditText) view.findViewById(R.id.et_rphone);
+        et_rquantity= (EditText) view.findViewById(R.id.et_rquantity);
+        et_rprice= (EditText) view.findViewById(R.id.et_rprice);
+        sp_rdbloodgroup= (Spinner) view.findViewById(R.id.sp_rbldgrp);
+        btn_rsave= (Button) view.findViewById(R.id.btn_rsave);
+        btn_rsave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                 String dname = et_dname.getText().toString();
-                 String dphoneno = et_dphoneno.getText().toString();
-                 Integer quantity = Integer.parseInt(et_dquantity.getText().toString());
-                 Integer price = Integer.parseInt(et_price.getText().toString());
-                 String bldgrp = sp_dbloodgroup.getSelectedItem().toString();
-                if (dname.length() == 0 || dphoneno.length() !=10 || quantity < 0 || price  < 0)
-                    Toast.makeText(getContext(), "Please Enter Details", Toast.LENGTH_SHORT).show();
-               else {
+                try {
+                    String rname = et_rname.getText().toString();
+                    String rphoneno = et_rphoneno.getText().toString();
+                    Integer quantity = Integer.parseInt(et_rquantity.getText().toString());
+                    Integer price = Integer.parseInt(et_rprice.getText().toString());
+                    String bldgrp = sp_rdbloodgroup.getSelectedItem().toString();
                     BloodBankDbHelper db=new BloodBankDbHelper(getActivity());
                     mdb=db.getWritableDatabase();
-                    addDonor(dname,dphoneno,quantity,price,"donor",bldgrp);
-                Toast.makeText(getContext(), "Data Saved", Toast.LENGTH_SHORT).show();
-
-
-            }}
+                    addReceiver(rname,rphoneno,quantity,price,getString(R.string.actor_type_receiver),bldgrp);
+                    Toast.makeText(getContext(), "Data Saved", Toast.LENGTH_SHORT).show();
+                } catch (Exception ex) {
+                    Toast.makeText(getContext(), "Please Enter Details", Toast.LENGTH_SHORT).show();
+                }
+            }
         });
-
-
-
-
         return view;
     }
 
-    private void addDonor(String dname, String dphoneno, Integer quantity, Integer price, String type, String bldgrp) {
+    private void addReceiver(String rname, String rphoneno, Integer quantity, Integer price, String type, String bldgrp) {
 
         String Query=" Select "+ BloodBankContract.DateEntry._ID + " , " + BloodBankContract.DateEntry.COLUMN_DAY
                 + " , "+BloodBankContract.DateEntry.COLUMN_MONTH + " , " + BloodBankContract.DateEntry.COLUMN_YEAR +
@@ -93,7 +88,6 @@ public class NewEntryDonorFragment extends Fragment implements AdapterView.OnIte
             for(int i=0;i<c.getCount();i++) {
                 if (c.getInt(1) == currentDay && c.getInt(2) == currentMonth && c.getInt(3) == currentYear) {
                     a = c.getInt(0);
-
                 }
                 c.moveToNext();
             }
@@ -110,20 +104,14 @@ public class NewEntryDonorFragment extends Fragment implements AdapterView.OnIte
                 Cursor cdate=mdb.rawQuery(q,null);
                 dateid=cdate.getInt(0);
                 Log.d("bb",dateid+"datemilgaya");
-
             }
             else
                 dateid=a;
-
-
-
-
         }
 
-
         ContentValues values=new ContentValues();
-        values.put(BloodBankContract.TransactionEntry.COLUMN_NAME,dname);
-        values.put(BloodBankContract.TransactionEntry.COLUMN_CONTACT_NO,dphoneno);
+        values.put(BloodBankContract.TransactionEntry.COLUMN_NAME,rname);
+        values.put(BloodBankContract.TransactionEntry.COLUMN_CONTACT_NO,rphoneno);
         values.put(BloodBankContract.TransactionEntry.COLUMN_TYPE,type);
         values.put(BloodBankContract.TransactionEntry.COLUMN_BLOOD_GROUP,bldgrp);
         values.put(BloodBankContract.TransactionEntry.COLUMN_QUANTITY,quantity);
@@ -134,22 +122,7 @@ public class NewEntryDonorFragment extends Fragment implements AdapterView.OnIte
             Log.d("bb","issue");
         else{
             Log.d("bb","inserted");
-        Log.d("bb",dateid+"bjm");
+            Log.d("bb",dateid+"jbjk");
         }
-
     }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
-
-
-
 }
-
