@@ -1,10 +1,8 @@
-package com.example.android.bloodbankapp;
+package com.example.android.bloodbankapp.transactions;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteQueryBuilder;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,12 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.android.bloodbankapp.R;
 import com.example.android.bloodbankapp.data.BloodBankContract;
 import com.example.android.bloodbankapp.data.BloodBankDbHelper;
 import com.example.android.bloodbankapp.data.TestUtils;
-
-import java.util.HashSet;
-import java.util.Set;
 
 public class TransactionsFragment extends Fragment implements TransactionAdapter.ListItemClickListener {
 
@@ -42,7 +38,7 @@ public class TransactionsFragment extends Fragment implements TransactionAdapter
         //Fetch data from database
         BloodBankDbHelper dbHelper = new BloodBankDbHelper(this.getContext());
         mDb = dbHelper.getWritableDatabase();
-        TestUtils.insertFakeData(mDb);
+        //TestUtils.insertFakeData(mDb);
         mCursor = getAllTransactions();
         mTransactionAdapter = new TransactionAdapter(mCursor, this);
         mTransactionList.setAdapter(mTransactionAdapter);

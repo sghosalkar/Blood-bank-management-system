@@ -1,4 +1,4 @@
-package com.example.android.bloodbankapp;
+package com.example.android.bloodbankapp.transactions;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.android.bloodbankapp.R;
 import com.example.android.bloodbankapp.data.BloodBankContract;
 import com.example.android.bloodbankapp.data.BloodBankDbHelper;
 

@@ -5,10 +5,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.example.android.bloodbankapp.TransactionAdapter;
 import com.example.android.bloodbankapp.data.BloodBankContract.DateEntry;
 import com.example.android.bloodbankapp.data.BloodBankContract.TransactionEntry;
-import com.example.android.bloodbankapp.data.BloodBankContract.TransactionEntry;
+
 /**
  * Created by shubham on 17/3/17.
  */
@@ -35,11 +34,10 @@ public class BloodBankDbHelper extends SQLiteOpenHelper {
                 DateEntry.COLUMN_YEAR + " INTEGER NOT NULL " +
                 " );";
 
-
         final String SQL_CREATE_TRANSACTION_TABLE = "CREATE TABLE " + TransactionEntry.TABLE_NAME + " (" +
                 TransactionEntry._ID + " INTEGER PRIMARY KEY, " +
                 TransactionEntry.COLUMN_NAME + " TEXT NOT NULL, " +
-                TransactionEntry.COLUMN_CONTACT_NO + " TEXT UNIQUE NOT NULL, " +
+                TransactionEntry.COLUMN_CONTACT_NO + " TEXT NOT NULL, " +
                 TransactionEntry.COLUMN_TYPE + " TEXT NOT NULL, " +
                 TransactionEntry.COLUMN_BLOOD_GROUP + " TEXT NOT NULL, " +
                 TransactionEntry.COLUMN_QUANTITY + " INTEGER NOT NULL, " +

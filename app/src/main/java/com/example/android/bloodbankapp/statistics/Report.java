@@ -1,4 +1,4 @@
-package com.example.android.bloodbankapp;
+package com.example.android.bloodbankapp.statistics;
 
 /**
  * Created by DELL on 19-Mar-17.

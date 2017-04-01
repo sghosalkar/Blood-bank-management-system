@@ -1,12 +1,9 @@
 package com.example.android.bloodbankapp.data;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-
-import com.example.android.bloodbankapp.TransactionAdapter;
 
 /**
  * Created by shubham on 28/3/17.
@@ -30,16 +27,16 @@ public class TestUtils {
                 {"30", "03", "2017"}
         };
         String[][] transactionFakeData = new String[][]{
-                {"Amar", "9999999999", "donor", "O+", "300", "300", "0"},
-                {"Akbar", "2229999999", "donor", "AB+", "300", "300", "1"},
-                {"Anthony", "7777779999", "receiver", "A+", "400", "400", "1"},
-                {"Jai", "9999888888", "donor", "B+", "300", "200", "2"},
-                {"Viru", "0000000000", "receiver", "O-", "400", "400", "2"},
-                {"Mogambo", "9999999977", "receiver", "O+", "300", "300", "0"},
-                {"Gabbar", "2229999955", "donor", "AB+", "300", "300", "1"},
-                {"Pasha", "7777779922", "donor", "A+", "400", "400", "1"},
-                {"Don", "9999888833", "receiver", "B+", "300", "200", "2"},
-                {"Jaadu", "0000000011", "receiver", "O-", "400", "400", "2"}
+                {"Amar", "9999999999", "Donor", "O+", "300", "300", "0"},
+                {"Akbar", "2229999999", "Donor", "AB+", "300", "300", "1"},
+                {"Anthony", "7777779999", "Receiver", "A+", "400", "400", "1"},
+                {"Jai", "9999888888", "Donor", "B+", "300", "200", "2"},
+                {"Viru", "0000000000", "Receiver", "O-", "400", "400", "2"},
+                {"Mogambo", "9999999977", "Receiver", "O+", "300", "300", "0"},
+                {"Gabbar", "2229999955", "Donor", "AB+", "300", "300", "1"},
+                {"Pasha", "7777779922", "Donor", "A+", "400", "400", "1"},
+                {"Don", "9999888833", "Receiver", "B+", "300", "200", "2"},
+                {"Jaadu", "0000000011", "Receiver", "O-", "400", "400", "2"}
         };
 
         try {

@@ -1,9 +1,13 @@
-package com.example.android.bloodbankapp;
+package com.example.android.bloodbankapp.statistics;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
+import com.example.android.bloodbankapp.R;
+import com.example.android.bloodbankapp.statistics.StatisticsReportsFragment;
+import com.example.android.bloodbankapp.statistics.StatisticsStatusFragment;
 
 /**
  * Created by shubham on 16/3/17.

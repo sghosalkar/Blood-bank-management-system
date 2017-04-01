@@ -1,7 +1,9 @@
-package com.example.android.bloodbankapp;
+package com.example.android.bloodbankapp.statistics;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.android.bloodbankapp.R;
 
 public class BloodReportDetails extends AppCompatActivity {
 

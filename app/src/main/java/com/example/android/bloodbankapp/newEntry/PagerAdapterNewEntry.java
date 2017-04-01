@@ -1,9 +1,11 @@
-package com.example.android.bloodbankapp;
+package com.example.android.bloodbankapp.newEntry;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
+import com.example.android.bloodbankapp.R;
 
 /**
  * Created by jaihi on 3/27/2017.

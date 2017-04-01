@@ -9,6 +9,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.android.bloodbankapp.newEntry.NewEntryFragment;
+import com.example.android.bloodbankapp.statistics.StatisticsFragment;
+import com.example.android.bloodbankapp.transactions.TransactionsFragment;
+
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener

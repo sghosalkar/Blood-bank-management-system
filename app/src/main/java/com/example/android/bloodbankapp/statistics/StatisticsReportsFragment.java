@@ -1,4 +1,4 @@
-package com.example.android.bloodbankapp;
+package com.example.android.bloodbankapp.statistics;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,12 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import com.example.android.bloodbankapp.R;
 import com.example.android.bloodbankapp.data.BloodBankDbHelper;
 
 
 public class StatisticsReportsFragment extends Fragment {
     ListView listview;
-    int up=R.drawable.up;
+    int up= R.drawable.up;
     int down=R.drawable.down;
     String month[]={"December","January","February","MArch"};
     String bldqtyin[]={"123 units","578 units","456 units","698 units"};

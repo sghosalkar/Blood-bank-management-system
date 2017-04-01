@@ -1,4 +1,4 @@
-package com.example.android.bloodbankapp;
+package com.example.android.bloodbankapp.statistics;
 
 import android.content.Context;
 import android.support.annotation.LayoutRes;
@@ -11,9 +11,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.android.bloodbankapp.R;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
 
 /**
  * Created by DELL on 19-Mar-17.

@@ -1,4 +1,4 @@
-package com.example.android.bloodbankapp;
+package com.example.android.bloodbankapp.newEntry;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -8,7 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class StatisticsFragment extends Fragment implements TabLayout.OnTabSelectedListener {
+import com.example.android.bloodbankapp.R;
+
+public class NewEntryFragment extends Fragment implements TabLayout.OnTabSelectedListener {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -17,16 +19,15 @@ public class StatisticsFragment extends Fragment implements TabLayout.OnTabSelec
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_statistics, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_new_entry, container, false);
 
-        tabLayout = (TabLayout) rootView.findViewById(R.id.statistics_tab_layout);
+        tabLayout = (TabLayout) rootView.findViewById(R.id.newentry_tab_layout);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        viewPager = (ViewPager) rootView.findViewById(R.id.statistics_view_pager);
-        PagerAdapter pagerAdapter = new PagerAdapter(getActivity().getSupportFragmentManager(), getContext());
+        viewPager = (ViewPager) rootView.findViewById(R.id.newentry_view_pager);
+        PagerAdapterNewEntry pagerAdapter = new PagerAdapterNewEntry(getActivity().getSupportFragmentManager(), getContext());
         viewPager.setAdapter(pagerAdapter);
 
-        //Connect viewPager to tabLayout
         tabLayout.setupWithViewPager(viewPager);
 
         return rootView;
