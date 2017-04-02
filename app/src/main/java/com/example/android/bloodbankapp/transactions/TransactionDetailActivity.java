@@ -38,6 +38,8 @@ public class TransactionDetailActivity extends AppCompatActivity {
             String name = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.TransactionEntry.COLUMN_NAME));
             String date = getTransactionDate(mCursor.getString(mCursor.getColumnIndex(BloodBankContract.TransactionEntry.COLUMN_DATE_KEY)));
             textView.setText(name + " " + date);
+
+            //TODO: Complete detail view of transaction.
         }
     }
 

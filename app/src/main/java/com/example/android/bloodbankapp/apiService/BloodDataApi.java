@@ -27,4 +27,6 @@ public interface BloodDataApi {
                                      @Field("year") int year
     );
 
+    //TODO: Implement fetching data from server
+
 }

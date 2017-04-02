@@ -129,7 +129,13 @@ public class NewEntryDonorFragment extends Fragment implements AdapterView.OnIte
         return currentDate.split("-");
     }
 
+    //TODO: Generalize insertion method for donor and receiver.
+    //TODO: Switch to AsyncTask or Service.
+
     private void sendTransactionData(ContentValues contentValues) {
+
+        //Specify your own ip address here only while testing.
+        //Revert to this IP back before committing.
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://192.168.1.4:80/")
                 .addConverterFactory(GsonConverterFactory.create())

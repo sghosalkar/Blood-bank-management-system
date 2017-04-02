@@ -67,6 +67,10 @@ public class NewEntryReceiverFragment extends Fragment {
         return view;
     }
 
+    //TODO: Generalize insertion method for donor and receiver.
+    //TODO: Add server side insertion.
+    //TODO: Switch to AsyncTask or Service.
+
     private void addReceiver(String rname, String rphoneno, Integer quantity, Integer price, String type, String bldgrp) {
 
         String Query=" Select "+ BloodBankContract.DateEntry._ID + " , " + BloodBankContract.DateEntry.COLUMN_DAY
