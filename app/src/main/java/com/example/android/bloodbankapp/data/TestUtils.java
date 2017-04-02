@@ -71,4 +71,14 @@ public class TestUtils {
         }
     }
 
+    //Danger! Never use this!
+    public static void deleteAllTransactionsFromDb(SQLiteDatabase db) {
+        db.delete(BloodBankContract.TransactionEntry.TABLE_NAME, null, null);
+    }
+
+    //Danger! Never use this!
+    public static void deleteAllDatesFromDb(SQLiteDatabase db) {
+        db.delete(BloodBankContract.DateEntry.TABLE_NAME, null, null);
+    }
+
 }

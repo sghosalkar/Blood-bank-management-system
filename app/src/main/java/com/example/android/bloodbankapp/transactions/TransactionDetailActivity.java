@@ -10,6 +10,10 @@ import android.widget.TextView;
 import com.example.android.bloodbankapp.R;
 import com.example.android.bloodbankapp.data.BloodBankContract;
 import com.example.android.bloodbankapp.data.BloodBankDbHelper;
+import com.example.android.bloodbankapp.data.TestUtils;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class TransactionDetailActivity extends AppCompatActivity {
 
@@ -31,7 +35,9 @@ public class TransactionDetailActivity extends AppCompatActivity {
         mCursor = getTransactionDetails(transactionId);
         if(mCursor.moveToFirst()) {
             TextView textView = (TextView) findViewById(R.id.transaction_name_textview);
-            textView.setText(mCursor.getString(mCursor.getColumnIndex(BloodBankContract.TransactionEntry.COLUMN_NAME)));
+            String name = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.TransactionEntry.COLUMN_NAME));
+            String date = getTransactionDate(mCursor.getString(mCursor.getColumnIndex(BloodBankContract.TransactionEntry.COLUMN_DATE_KEY)));
+            textView.setText(name + " " + date);
         }
     }
 
@@ -45,5 +51,28 @@ public class TransactionDetailActivity extends AppCompatActivity {
                 null,
                 null
         );
+    }
+
+    private String getTransactionDate(String dateId) {
+
+        final String sTransactionDateSelection =
+                BloodBankContract.DateEntry.TABLE_NAME +
+                        "." + BloodBankContract.DateEntry._ID + " = ? ";
+
+        mCursor = mDb.query(BloodBankContract.DateEntry.TABLE_NAME,
+                null,
+                sTransactionDateSelection,
+                new String[] {dateId},
+                null,
+                null,
+                null,
+                null
+                );
+        mCursor.moveToFirst();
+        String transactionDate =
+                mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DateEntry.COLUMN_DAY)) + "-" +
+                        mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DateEntry.COLUMN_MONTH)) + "-" +
+                        mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DateEntry.COLUMN_YEAR));
+        return transactionDate;
     }
 }
