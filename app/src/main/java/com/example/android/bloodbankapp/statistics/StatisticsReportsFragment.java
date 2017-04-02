@@ -130,20 +130,21 @@ public class StatisticsReportsFragment extends Fragment {
                 }
                 c.moveToNext();
             }
+        }
 
 
-            bldqtyin[11]=Integer.toString(bldin12);
-            bldqtyin[10]=Integer.toString(bldin11);
-            bldqtyin[9]=Integer.toString(bldin10);
-            bldqtyin[8]=Integer.toString(bldin9);
-            bldqtyin[7]=Integer.toString(bldin8);
-            bldqtyin[6]=Integer.toString(bldin7);
-            bldqtyin[5]=Integer.toString(bldin6);
-            bldqtyin[4]=Integer.toString(bldin5);
-            bldqtyin[3]=Integer.toString(bldin4);
-            bldqtyin[2]=Integer.toString(bldin3);
-            bldqtyin[1]=Integer.toString(bldin2);
-            bldqtyin[0]=Integer.toString(bldin1);
+        bldqtyin[11]=Integer.toString(bldin12);
+        bldqtyin[10]=Integer.toString(bldin11);
+        bldqtyin[9]=Integer.toString(bldin10);
+        bldqtyin[8]=Integer.toString(bldin9);
+        bldqtyin[7]=Integer.toString(bldin8);
+        bldqtyin[6]=Integer.toString(bldin7);
+        bldqtyin[5]=Integer.toString(bldin6);
+        bldqtyin[4]=Integer.toString(bldin5);
+        bldqtyin[3]=Integer.toString(bldin4);
+        bldqtyin[2]=Integer.toString(bldin3);
+        bldqtyin[1]=Integer.toString(bldin2);
+        bldqtyin[0]=Integer.toString(bldin1);
 
          /* if (currentMonth == 1)
               month[0]="January";
@@ -170,46 +171,46 @@ public class StatisticsReportsFragment extends Fragment {
           else if (currentMonth == 12)
               month[0]="December";
 */
-            Calendar calender = Calendar.getInstance();
-            SimpleDateFormat df=new SimpleDateFormat("MMMM");
-            String currentDate = df.format(calender.getTime());
-            String current[] = currentDate.split("-");
-            String currentMonth= current[0];
+        Calendar calender = Calendar.getInstance();
+        SimpleDateFormat df=new SimpleDateFormat("MMMM");
+        String currentDate = df.format(calender.getTime());
+        String current[] = currentDate.split("-");
+        String currentMonth= current[0];
 
 
-            try {
-                calender.setTime(df.parse(currentMonth));
-                for(int i=0;i<12;i++){
-                    String monthname=df.format(calender.getTime());
-                    month[i]=monthname;
-                    calender.add(Calendar.MONTH,-1);
+        try {
+            calender.setTime(df.parse(currentMonth));
+            for(int i=0;i<12;i++){
+                String monthname=df.format(calender.getTime());
+                month[i]=monthname;
+                calender.add(Calendar.MONTH,-1);
 
 
-                }
-            } catch (ParseException e) {
-                e.printStackTrace();
             }
-
-
-
-            bldqtyout[11]=Integer.toString(bldout12);
-            bldqtyout[10]=Integer.toString(bldout11);
-            bldqtyout[9]=Integer.toString(bldout10);
-            bldqtyout[8]=Integer.toString(bldout9);
-            bldqtyout[7]=Integer.toString(bldout8);
-            bldqtyout[6]=Integer.toString(bldout7);
-            bldqtyout[5]=Integer.toString(bldout6);
-            bldqtyout[4]=Integer.toString(bldout5);
-            bldqtyout[3]=Integer.toString(bldout4);
-            bldqtyout[2]=Integer.toString(bldout3);
-            bldqtyout[1]=Integer.toString(bldout2);
-            bldqtyout[0]=Integer.toString(bldout1);
-            for (int i=0;i<12;i++){
-                Log.d("bb",bldqtyin[i]);
-                Log.d("bb",bldqtyout[i]);
-                Log.d("bb",month[i]+"hee");
-            }
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
+
+
+
+        bldqtyout[11]=Integer.toString(bldout12);
+        bldqtyout[10]=Integer.toString(bldout11);
+        bldqtyout[9]=Integer.toString(bldout10);
+        bldqtyout[8]=Integer.toString(bldout9);
+        bldqtyout[7]=Integer.toString(bldout8);
+        bldqtyout[6]=Integer.toString(bldout7);
+        bldqtyout[5]=Integer.toString(bldout6);
+        bldqtyout[4]=Integer.toString(bldout5);
+        bldqtyout[3]=Integer.toString(bldout4);
+        bldqtyout[2]=Integer.toString(bldout3);
+        bldqtyout[1]=Integer.toString(bldout2);
+        bldqtyout[0]=Integer.toString(bldout1);
+        for (int i=0;i<12;i++){
+            Log.d("bb",bldqtyin[i]);
+            Log.d("bb",bldqtyout[i]);
+            Log.d("bb",month[i]+"hee");
+        }
+
         Report r = null;
         for(String trace:month){
             Log.d("bb",trace+"kk");
