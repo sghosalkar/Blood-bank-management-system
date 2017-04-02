@@ -16,12 +16,20 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.android.bloodbankapp.R;
+import com.example.android.bloodbankapp.apiService.BloodDataApi;
 import com.example.android.bloodbankapp.data.BloodBankContract;
 import com.example.android.bloodbankapp.data.BloodBankDbHelper;
-import com.example.android.bloodbankapp.data.TestUtils;
+import com.example.android.bloodbankapp.model.Date;
+import com.example.android.bloodbankapp.model.Transaction;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by jaihi on 3/27/2017.
@@ -65,6 +73,7 @@ public class NewEntryDonorFragment extends Fragment implements AdapterView.OnIte
                     values.put(BloodBankContract.TransactionEntry.COLUMN_QUANTITY, quantity);
                     values.put(BloodBankContract.TransactionEntry.COLUMN_PRICE, price);
                     addDonor(values);
+
                     Toast.makeText(getContext(), "Data Saved", Toast.LENGTH_SHORT).show();
                 } catch (Exception ex) {
                     Toast.makeText(getContext(), "Please Enter Proper Details", Toast.LENGTH_SHORT).show();
@@ -106,6 +115,11 @@ public class NewEntryDonorFragment extends Fragment implements AdapterView.OnIte
         }
         values.put(BloodBankContract.TransactionEntry.COLUMN_DATE_KEY, dateId);
         long rowId = mDb.insert(BloodBankContract.TransactionEntry.TABLE_NAME, null, values);
+
+        try {
+            sendTransactionData(values);
+        } catch (Exception ex) {}
+
     }
 
     private String[] getDate() {
@@ -113,6 +127,58 @@ public class NewEntryDonorFragment extends Fragment implements AdapterView.OnIte
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         String currentDate = df.format(calender.getTime());
         return currentDate.split("-");
+    }
+
+    private void sendTransactionData(ContentValues contentValues) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://192.168.1.4:80/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        BloodDataApi bloodDataApi = retrofit.create(BloodDataApi.class);
+
+        Transaction transaction = new Transaction();
+        transaction.setBloodbankId(1);
+        transaction.setName(contentValues.getAsString(BloodBankContract.TransactionEntry.COLUMN_NAME));
+        transaction.setContactNo(contentValues.getAsString(BloodBankContract.TransactionEntry.COLUMN_CONTACT_NO));
+        transaction.setType(contentValues.getAsString(BloodBankContract.TransactionEntry.COLUMN_TYPE));
+        transaction.setBloodGroup(contentValues.getAsString(BloodBankContract.TransactionEntry.COLUMN_BLOOD_GROUP));
+        transaction.setQuantity(contentValues.getAsInteger(BloodBankContract.TransactionEntry.COLUMN_QUANTITY));
+        transaction.setPrice(contentValues.getAsInteger(BloodBankContract.TransactionEntry.COLUMN_PRICE));
+
+        Date date = new Date();
+        String[] dateString = getDate();
+        date.setDay(Integer.parseInt(dateString[0]));
+        date.setMonth(Integer.parseInt(dateString[1]));
+        date.setYear(Integer.parseInt(dateString[2]));
+
+        Call<Transaction> transactionCall = bloodDataApi.setTransaction(
+                transaction.getBloodbankId(),
+                transaction.getName(),
+                transaction.getContactNo(),
+                transaction.getType(),
+                transaction.getBloodGroup(),
+                transaction.getQuantity(),
+                transaction.getPrice(),
+                date.getDay(),
+                date.getMonth(),
+                date.getYear()
+        );
+
+        transactionCall.enqueue(new Callback<Transaction>() {
+            @Override
+            public void onResponse(Call<Transaction> call, Response<Transaction> response) {
+                Log.d("onResponse", "" + response.code() +
+                        "  response body "  + response.body() +
+                        " responseError " + response.errorBody() + " responseMessage " +
+                        response.message());
+            }
+
+            @Override
+            public void onFailure(Call<Transaction> call, Throwable t) {
+                Log.d("onFailure", t.toString());
+            }
+        });
     }
 
     @Override
