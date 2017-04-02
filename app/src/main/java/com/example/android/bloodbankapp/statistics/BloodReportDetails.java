@@ -22,35 +22,30 @@ public class BloodReportDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blood_report_details);
-
         tv_apos= (TextView) findViewById(R.id.tv_apos);
         tv_aposin= (TextView) findViewById(R.id.tv_aposin);
         tv_aposout= (TextView) findViewById(R.id.tv_aposout);
         tv_aneg= (TextView) findViewById(R.id.tv_aneg);
         tv_anegin= (TextView) findViewById(R.id.tv_anegin);
         tv_anegout= (TextView) findViewById(R.id.tv_anegout);
-
         tv_bpos= (TextView) findViewById(R.id.tv_bpos);
         tv_bposin= (TextView) findViewById(R.id.tv_bposin);
         tv_bposout= (TextView) findViewById(R.id.tv_bposout);
         tv_bneg= (TextView) findViewById(R.id.tv_bneg);
         tv_bnegin= (TextView) findViewById(R.id.tv_bnegin);
         tv_bnegout= (TextView) findViewById(R.id.tv_bnegout);
-
         tv_abpos= (TextView) findViewById(R.id.tv_abpos);
         tv_abposin= (TextView) findViewById(R.id.tv_abposin);
         tv_abposout= (TextView) findViewById(R.id.tv_abposout);
         tv_abneg= (TextView) findViewById(R.id.tv_abneg);
         tv_abnegin= (TextView) findViewById(R.id.tv_abnegin);
         tv_abnegout= (TextView) findViewById(R.id.tv_abnegout);
-
         tv_opos= (TextView) findViewById(R.id.tv_opos);
         tv_oposin= (TextView) findViewById(R.id.tv_oposin);
         tv_oposout= (TextView) findViewById(R.id.tv_oposout);
         tv_oneg= (TextView) findViewById(R.id.tv_oneg);
         tv_onegin= (TextView) findViewById(R.id.tv_onegin);
         tv_onegout= (TextView) findViewById(R.id.tv_onegout);
-
 
         Intent i=getIntent();
         //month=i.getExtras("Month",month);
@@ -79,7 +74,6 @@ public class BloodReportDetails extends AppCompatActivity {
                     bldinopos=bldinopos+c.getInt(1);
                 else if(c.getString(0) == "O-")
                     bldinoneg=bldinoneg+c.getInt(1);
-
             }else{
                 if(c.getString(0) == "A+")
                     bldoutapos=bldoutapos+c.getInt(1);
@@ -97,57 +91,42 @@ public class BloodReportDetails extends AppCompatActivity {
                     bldoutopos=bldoutopos+c.getInt(1);
                 else if(c.getString(0) == "O-")
                     bldoutoneg=bldoutoneg+c.getInt(1);
-
             }
-
             Log.d("bb",bldinabneg+"hi");
             Log.d("bb",bldinabpos+"hi");
-
             Log.d("bb",bldinaneg+"hi");
             Log.d("bb",bldinapos+"hi");
             Log.d("bb",bldinbneg+"hi");
             Log.d("bb",bldinbpos+"hi");
             Log.d("bb",bldinoneg+"hi");
             Log.d("bb",bldinopos+"hi");
-
-
-
-
         }
-
-
-        tv_aposin.setText(bldinapos);
-        tv_aposout.setText(bldinapos);
-        tv_bposin.setText(bldinbpos);
-        tv_bposout.setText(bldoutbpos);
-        tv_abposin.setText(bldinabpos);
-        tv_abposout.setText(bldoutabpos);
-        tv_oposin.setText(bldinopos);
-        tv_oposout.setText(bldoutopos);
-        tv_anegin.setText(bldinaneg);
-        tv_anegout.setText(bldinaneg);
-        tv_bnegin.setText(bldinbneg);
-        tv_bnegout.setText(bldoutbneg);
-        tv_abnegin.setText(bldinabneg);
-        tv_abnegout.setText(bldoutabneg);
-        tv_onegin.setText(bldinoneg);
-        tv_onegout.setText(bldoutoneg);
-
-
-
+        tv_aposin.setText(String.valueOf(bldinapos));
+        tv_aposout.setText(String.valueOf(bldinapos));
+        tv_bposin.setText(String.valueOf(bldinbpos));
+        tv_bposout.setText(String.valueOf(bldoutbpos));
+        tv_abposin.setText(String.valueOf(bldinabpos));
+        tv_abposout.setText(String.valueOf(bldoutabpos));
+        tv_oposin.setText(String.valueOf(bldinopos));
+        tv_oposout.setText(String.valueOf(bldoutopos));
+        tv_anegin.setText(String.valueOf(bldinaneg));
+        tv_anegout.setText(String.valueOf(bldinaneg));
+        tv_bnegin.setText(String.valueOf(bldinbneg));
+        tv_bnegout.setText(String.valueOf(bldoutbneg));
+        tv_abnegin.setText(String.valueOf(bldinabneg));
+        tv_abnegout.setText(String.valueOf(bldoutabneg));
+        tv_onegin.setText(String.valueOf(bldinoneg));
+        tv_onegout.setText(String.valueOf(bldoutoneg));
     }
 
     private Cursor getBloodGroupDetails(){
-
         String q=" Select "+BloodBankContract.TransactionEntry.COLUMN_BLOOD_GROUP
                 +" , "+BloodBankContract.TransactionEntry.COLUMN_QUANTITY
                 +" , "+BloodBankContract.TransactionEntry.COLUMN_TYPE
                 +" from "+BloodBankContract.TransactionEntry.TABLE_NAME+" where "
                 +BloodBankContract.TransactionEntry.COLUMN_DATE_KEY+" IN ( Select "+BloodBankContract.DateEntry._ID + " FROM "
                 +BloodBankContract.DateEntry.TABLE_NAME+" where "+BloodBankContract.DateEntry.COLUMN_MONTH+"  = "+month+") ; ";
-
         Cursor c=mdb.rawQuery(q,null);
-
         return  c;
     }
 }
