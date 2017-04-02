@@ -136,7 +136,7 @@
             <TextView
                 android:gravity="center"
                 android:text=""
-                android:id="@+id/tv_bnedin"
+                android:id="@+id/tv_bnegin"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
@@ -236,7 +236,7 @@
             <TextView
                 android:layout_gravity="left"
                 android:text="O -ve"
-                android:id="@+id/tv_0neg"
+                android:id="@+id/tv_oneg"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
@@ -244,7 +244,7 @@
             <TextView
                 android:gravity="center"
                 android:text=""
-                android:id="@+id/tv_ogenin"
+                android:id="@+id/tv_onegin"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
