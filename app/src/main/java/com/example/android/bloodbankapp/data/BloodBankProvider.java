@@ -34,6 +34,12 @@ public class BloodBankProvider{
 
     public static final String LOG_TAG = BloodBankProvider.class.getSimpleName();
 
+    /**
+     * @param bloodBankId Set blood bank ID here
+     *                    Add an option for setting blood bank id in app options menu for testing purpose
+     */
+    public static final int bloodBankId = 1;
+
     SQLiteDatabase mDb;
     Context mContext;
 
@@ -102,7 +108,7 @@ public class BloodBankProvider{
         BloodDataInsertionApi bloodDataInsertionApi = retrofit.create(BloodDataInsertionApi.class);
 
         Transaction transaction = new Transaction();
-        transaction.setBloodbankId(1);
+        transaction.setBloodbankId(bloodBankId);
         transaction.setName(contentValues.getAsString(BloodBankContract.TransactionEntry.COLUMN_NAME));
         transaction.setContactNo(contentValues.getAsString(BloodBankContract.TransactionEntry.COLUMN_CONTACT_NO));
         transaction.setType(contentValues.getAsString(BloodBankContract.TransactionEntry.COLUMN_TYPE));
@@ -154,7 +160,7 @@ public class BloodBankProvider{
 
             TransactionFetchApi transactionFetchApi = retrofit.create(TransactionFetchApi.class);
 
-            Call<List<Transaction>> transactionListCall = transactionFetchApi.getAllTransactions(2);
+            Call<List<Transaction>> transactionListCall = transactionFetchApi.getAllTransactions(bloodBankId);
 
             transactionListCall.enqueue(new Callback<List<Transaction>>() {
                 @Override
@@ -164,6 +170,9 @@ public class BloodBankProvider{
                     try {
                         deleteAllTransactionsFromDb();
                         for (Transaction transaction: transactionList) {
+                            if(transaction.getName().equals("close")) {
+                                break;
+                            }
                             ContentValues contentValues = new ContentValues();
                             contentValues.put(BloodBankContract.TransactionEntry.COLUMN_NAME, transaction.getName());
                             contentValues.put(BloodBankContract.TransactionEntry.COLUMN_CONTACT_NO, transaction.getContactNo());
@@ -185,6 +194,7 @@ public class BloodBankProvider{
 
                 @Override
                 public void onFailure(Call<List<Transaction>> call, Throwable t) {
+                    deleteAllTransactionsFromDb();
                     Log.d("onFailure", t.toString());
                 }
             });
