@@ -55,6 +55,9 @@ public class NewEntryDonorFragment extends Fragment {
         spinnerBloodGroup = (Spinner) view.findViewById(R.id.sp_bldgrp);
         buttonSave = (Button) view.findViewById(R.id.btn_save);
 
+        //BloodBankProvider bloodBankProvider = new BloodBankProvider(getContext());
+        //bloodBankProvider.deleteAllTransactionsFromDb();
+
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

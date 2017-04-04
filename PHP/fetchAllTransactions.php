@@ -24,13 +24,12 @@ catch(PDOException $e) {
 
 	$stmt->execute();
 
-	if($stmt->rowCount() > 1) {
+	if($stmt->rowCount() > 0) {
 		$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		echo json_encode($data);
-	}
-	else if($stmt->rowCount() == 1) {
-		$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		echo "[" . json_encode($data) . "]";
+		$closeData = array("name"=>"close");
+		$closeArray = array($closeData);
+		$combine = array_merge($data,$closeArray);
+		echo json_encode($combine);
 	}
 	else {
 		$json['success'] = 0;
@@ -39,6 +38,5 @@ catch(PDOException $e) {
 
 		echo "{".json_encode($json)."}";
 	}
-
 	$conn = null;
 ?>
