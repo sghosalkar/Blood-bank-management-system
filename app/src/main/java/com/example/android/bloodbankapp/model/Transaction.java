@@ -29,6 +29,16 @@ public class Transaction {
     @SerializedName("price")
     private int price;
 
+    @SerializedName("day")
+    private int day;
+
+    @SerializedName("month")
+    private int month;
+
+    @SerializedName("year")
+    private int year;
+
+    //Setters
     public void setBloodbankId(int bloodbankId) { this.bloodbankId = bloodbankId; }
 
     public void setName(String name) { this.name = name; }
@@ -43,6 +53,13 @@ public class Transaction {
 
     public void setPrice(int price) { this.price = price; }
 
+    public void setDay(int day) { this.day = day; }
+
+    public void setMonth(int month) { this.month = month; }
+
+    public void setYear(int year) { this.year = year; }
+
+    //Getters
     public int getBloodbankId() { return bloodbankId; }
 
     public String getName() { return name; }
@@ -56,5 +73,11 @@ public class Transaction {
     public int getQuantity() { return quantity; }
 
     public int getPrice() { return price; }
+
+    public int getDay() { return day; }
+
+    public int getMonth() { return month; }
+
+    public int getYear() { return year; }
 
 }

@@ -7,21 +7,33 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.android.bloodbankapp.R;
+import com.example.android.bloodbankapp.apiService.BloodDataInsertionApi;
+import com.example.android.bloodbankapp.apiService.TransactionFetchApi;
 import com.example.android.bloodbankapp.data.BloodBankContract;
 import com.example.android.bloodbankapp.data.BloodBankDbHelper;
-import com.example.android.bloodbankapp.data.TestUtils;
+import com.example.android.bloodbankapp.data.BloodBankProvider;
+import com.example.android.bloodbankapp.model.Transaction;
+import com.example.android.bloodbankapp.model.TransactionList;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class TransactionsFragment extends Fragment implements TransactionAdapter.ListItemClickListener {
 
     public static final String LOG_TAG = TransactionsFragment.class.getSimpleName();
     private TransactionAdapter mTransactionAdapter;
     private RecyclerView mTransactionList;
-    SQLiteDatabase mDb;
     Cursor mCursor;
 
     @Override
@@ -36,12 +48,12 @@ public class TransactionsFragment extends Fragment implements TransactionAdapter
         mTransactionList.setHasFixedSize(true);
 
         //Fetch data from database
-        BloodBankDbHelper dbHelper = new BloodBankDbHelper(this.getContext());
-        mDb = dbHelper.getWritableDatabase();
+        BloodBankProvider bloodBankProvider = new BloodBankProvider(getContext());
         //TestUtils.insertFakeData(mDb);
-        mCursor = getAllTransactions();
+        mCursor = bloodBankProvider.getAllTransactionsFromDb();
         mTransactionAdapter = new TransactionAdapter(mCursor, this);
         mTransactionList.setAdapter(mTransactionAdapter);
+        bloodBankProvider.getAllTransactionsFromServer();
         return rootView;
     }
 
@@ -53,17 +65,5 @@ public class TransactionsFragment extends Fragment implements TransactionAdapter
         int idAtPosition = mCursor.getInt(mCursor.getColumnIndex(BloodBankContract.TransactionEntry._ID));
         intent.putExtra(getString(R.string.id_at_position), idAtPosition);
         startActivity(intent);
-    }
-
-    private Cursor getAllTransactions() {
-
-        return mDb.query(BloodBankContract.TransactionEntry.TABLE_NAME,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null
-        );
     }
 }

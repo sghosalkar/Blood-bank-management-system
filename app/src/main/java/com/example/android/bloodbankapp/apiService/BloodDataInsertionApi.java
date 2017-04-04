@@ -2,16 +2,19 @@ package com.example.android.bloodbankapp.apiService;
 
 import com.example.android.bloodbankapp.model.Transaction;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 /**
  * Created by shubham on 2/4/17.
  */
 
-public interface BloodDataApi {
+public interface BloodDataInsertionApi {
 
     @FormUrlEncoded
     @POST("insertTransaction.php")
@@ -26,7 +29,5 @@ public interface BloodDataApi {
                                      @Field("month") int month,
                                      @Field("year") int year
     );
-
-    //TODO: Implement fetching data from server
 
 }
