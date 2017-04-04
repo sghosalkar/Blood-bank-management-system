@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.bloodbankapp.data.BloodBankContract;
@@ -130,8 +131,9 @@ public class StatisticsReportsFragment extends Fragment {
                 }
                 c.moveToNext();
             }
-        }
 
+
+        }
 
         bldqtyin[11]=Integer.toString(bldin12);
         bldqtyin[10]=Integer.toString(bldin11);
@@ -145,32 +147,6 @@ public class StatisticsReportsFragment extends Fragment {
         bldqtyin[2]=Integer.toString(bldin3);
         bldqtyin[1]=Integer.toString(bldin2);
         bldqtyin[0]=Integer.toString(bldin1);
-
-         /* if (currentMonth == 1)
-              month[0]="January";
-            else  if (currentMonth == 2)
-              month[0]="Frbruary";
-          else if (currentMonth == 3)
-              month[0]="March";
-          else if (currentMonth == 4)
-              month[0]="April";
-          else if (currentMonth == 5)
-              month[0]="May";
-          else if (currentMonth == 6)
-              month[0]="June";
-          else if (currentMonth == 7)
-              month[0]="July";
-          else if (currentMonth == 8)
-              month[0]="August";
-          else if (currentMonth == 9)
-              month[0]="September";
-          else if (currentMonth == 10)
-              month[0]="October";
-          else if (currentMonth == 11)
-              month[0]="November";
-          else if (currentMonth == 12)
-              month[0]="December";
-*/
         Calendar calender = Calendar.getInstance();
         SimpleDateFormat df=new SimpleDateFormat("MMMM");
         String currentDate = df.format(calender.getTime());
@@ -274,9 +250,10 @@ public class StatisticsReportsFragment extends Fragment {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                TextView month = (TextView) view.findViewById(R.id.tv_month);
+                //Toast.makeText(getContext(),month.getText().toString(), Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(getActivity(),BloodReportDetails.class);
-                //   Toast.makeText(getContext(),listview.getItemAtPosition(i).toString(), Toast.LENGTH_SHORT).show();
-                intent.putExtra("Month",listview.getItemAtPosition(i).toString());
+                intent.putExtra("Month",month.getText().toString());
                 startActivity(intent);
             }
         });
