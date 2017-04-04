@@ -16,7 +16,8 @@
             android:id="@+id/statistics_tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:elevation="6dp"
+            android:elevation="3dp"
+            android:background="@color/colorAccent"
             android:minHeight="?attr/actionBarSize">
 
         </android.support.design.widget.TabLayout>
