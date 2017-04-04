@@ -9,15 +9,22 @@
         android:key="Set Minimum value"
         android:hint="Set Minimum value"/>
 
+    <EditTextPreference
+        android:title="Change Password"
+        android:key="Change Password"
+        android:hint="Change Password"/>
+
+
+
     <PreferenceScreen
         android:key="About_us"
         android:title="About Us"
         android:persistent="false"
         >
+
         <Preference android:key="About_us"
             android:title="About us"
-            android:summary=".
-"
+            android:summary="."
             android:persistent="true"/>
         <Preference android:key="About_us"
             android:title="Support"
