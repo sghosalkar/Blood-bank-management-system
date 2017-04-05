@@ -82,7 +82,7 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
             nameView.setText(name);
             typeView.setText(type);
             bloodGroupView.setText(bloodGroup);
-            quantityView.setText(quantity);
+            quantityView.setText(quantity + " mL");
         }
 
         @Override

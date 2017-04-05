@@ -51,9 +51,9 @@ public class TransactionsFragment extends Fragment implements TransactionAdapter
         BloodBankProvider bloodBankProvider = new BloodBankProvider(getContext());
         //TestUtils.insertFakeData(mDb);
         mCursor = bloodBankProvider.getAllTransactionsFromDb();
+        bloodBankProvider.getAllTransactionsFromServer();
         mTransactionAdapter = new TransactionAdapter(mCursor, this);
         mTransactionList.setAdapter(mTransactionAdapter);
-        bloodBankProvider.getAllTransactionsFromServer();
         return rootView;
     }
 

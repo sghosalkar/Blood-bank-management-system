@@ -55,7 +55,7 @@ tools:context="com.example.android.bloodbankapp.newEntry.NewEntryDonorFragment">
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_toRightOf="@+id/bg"
+                android:layout_toRightOf="@+id/tv_bg"
                 android:entries="@array/blood_group"
                 android:prompt="@string/spinner_title" />
 

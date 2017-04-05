@@ -21,7 +21,7 @@ public class TransactionDetailActivity extends AppCompatActivity {
     Cursor mCursor;
     private static final String sTransactionSelection =
             BloodBankContract.TransactionEntry.TABLE_NAME +
-            "." + BloodBankContract.TransactionEntry._ID + " = ? ";
+                    "." + BloodBankContract.TransactionEntry._ID + " = ? ";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,14 +30,38 @@ public class TransactionDetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int transactionId = intent.getIntExtra(getString(R.string.id_at_position), 0);
 
+        TextView nameTextView = (TextView) findViewById(R.id.name_textview);
+        TextView contactTextView = (TextView) findViewById(R.id.contact_no_textview);
+        TextView typeAndDateTextView = (TextView) findViewById(R.id.type_and_date_textview);
+        TextView bloodGroupTextView = (TextView) findViewById(R.id.blood_group_textview);
+        TextView quantityTextView = (TextView) findViewById(R.id.quantity_textview);
+        TextView priceTextView = (TextView) findViewById(R.id.price_textview);
+
         BloodBankDbHelper dbHelper = new BloodBankDbHelper(this);
         mDb = dbHelper.getReadableDatabase();
         mCursor = getTransactionDetails(transactionId);
         if(mCursor.moveToFirst()) {
-            TextView textView = (TextView) findViewById(R.id.transaction_name_textview);
-            String name = mCursor.getString(mCursor.getColumnIndex(BloodBankContract.TransactionEntry.COLUMN_NAME));
-            String date = getTransactionDate(mCursor.getString(mCursor.getColumnIndex(BloodBankContract.TransactionEntry.COLUMN_DATE_KEY)));
-            textView.setText(name + " " + date);
+            nameTextView.setText(mCursor.getString(mCursor.getColumnIndex(BloodBankContract.TransactionEntry.COLUMN_NAME)));
+            contactTextView.setText(mCursor.getString(mCursor.getColumnIndex(BloodBankContract.TransactionEntry.COLUMN_CONTACT_NO)));
+            bloodGroupTextView.setText(mCursor.getString(mCursor.getColumnIndex(BloodBankContract.TransactionEntry.COLUMN_BLOOD_GROUP)));
+            String quantityText = "Quantity: " + mCursor.getString(mCursor.getColumnIndex(BloodBankContract.TransactionEntry.COLUMN_QUANTITY));
+            quantityTextView.setText(quantityText);
+            String priceText = "Amount associated: " + mCursor.getString(mCursor.getColumnIndex(BloodBankContract.TransactionEntry.COLUMN_PRICE));
+            priceTextView.setText(priceText);
+            if(mCursor.getString(mCursor.getColumnIndex(BloodBankContract.TransactionEntry.COLUMN_TYPE)).equals("Donor")){
+                String donorDateText = "Donated on " +
+                        getTransactionDate(mCursor.getString(mCursor.getColumnIndex(BloodBankContract.TransactionEntry.COLUMN_DATE_KEY)));
+                typeAndDateTextView.setText(donorDateText);
+            } else if (mCursor.getString(mCursor.getColumnIndex(BloodBankContract.TransactionEntry.COLUMN_TYPE)).equals("Receiver")) {
+                String receiverDateText = "Received on " +
+                        getTransactionDate(mCursor.getString(mCursor.getColumnIndex(BloodBankContract.TransactionEntry.COLUMN_DATE_KEY)));
+                typeAndDateTextView.setText(receiverDateText);
+            } else {
+                typeAndDateTextView.setText(
+                        mCursor.getString(mCursor.getColumnIndex(BloodBankContract.TransactionEntry.COLUMN_TYPE)) + "    " +
+                                getTransactionDate(mCursor.getString(mCursor.getColumnIndex(BloodBankContract.TransactionEntry.COLUMN_DATE_KEY)))
+                );
+            }
 
             //TODO: Complete detail view of transaction.
         }
@@ -69,7 +93,7 @@ public class TransactionDetailActivity extends AppCompatActivity {
                 null,
                 null,
                 null
-                );
+        );
         mCursor.moveToFirst();
         String transactionDate =
                 mCursor.getString(mCursor.getColumnIndex(BloodBankContract.DateEntry.COLUMN_DAY)) + "-" +
