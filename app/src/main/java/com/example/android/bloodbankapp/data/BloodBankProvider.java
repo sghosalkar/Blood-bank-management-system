@@ -194,7 +194,6 @@ public class BloodBankProvider{
 
                 @Override
                 public void onFailure(Call<List<Transaction>> call, Throwable t) {
-                    deleteAllTransactionsFromDb();
                     Log.d("onFailure", t.toString());
                 }
             });
