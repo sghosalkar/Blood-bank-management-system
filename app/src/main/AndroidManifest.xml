@@ -28,7 +28,8 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".statistics.BloodReportDetails" />
         <activity android:name=".transactions.TransactionDetailActivity" />
-        <activity android:name=".SignupActivity"></activity>
+        <activity android:name=".SignupActivity">
+        </activity>
     </application>
 
 </manifest>
