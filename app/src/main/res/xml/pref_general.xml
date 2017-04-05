@@ -14,8 +14,6 @@
         android:key="Change Password"
         android:hint="Change Password"/>
 
-
-
     <PreferenceScreen
         android:key="About_us"
         android:title="About Us"
@@ -39,5 +37,14 @@ Detailed information of transactions of each blood type in that month.
 Put fetching from database to background thread.
 "
         android:persistent="true"/>
+    </PreferenceScreen>
+
+
+    <PreferenceScreen
+        android:title="Logout"
+        >
+
+        <intent android:action="android.intent.ACTION_MAIN"/>
+
     </PreferenceScreen>
 </PreferenceScreen>

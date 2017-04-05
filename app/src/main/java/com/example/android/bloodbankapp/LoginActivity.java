@@ -36,7 +36,9 @@ public class LoginActivity extends Activity
                 EditText pass = (EditText) findViewById(R.id.pass);
                 if (user.getText().toString().equals("abc") && pass.getText().toString().equals("abc")) {
                     Toast.makeText(getApplicationContext(), "login successful", Toast.LENGTH_LONG).show();
-                }
+                    Intent i = new Intent(getBaseContext(),MainActivity.class);
+                    startActivity(i);
+                                    }
                 else
                     Toast.makeText(getApplicationContext(), "Login Failed", Toast.LENGTH_LONG).show();
 
