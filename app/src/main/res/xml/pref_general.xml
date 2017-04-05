@@ -13,7 +13,16 @@
         android:title="Change Password"
         android:key="Change Password"
         android:hint="Change Password"/>
+<PreferenceScreen
+    android:title="Edit Account"
+    android:key="Edit Account"
+    android:hint="Edit Account"
+    >
+    <intent android:action="com.example.android.bloodbankapp.newEntry.NewEntryFragment"/>
+    <intent android:targetPackage="com.example.android.bloodbankapp.newEntry"
+        android:targetClass="net.hasnath.android.MyActivity"/>
 
+    </PreferenceScreen>
 
 
     <PreferenceScreen
