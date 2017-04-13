@@ -30,10 +30,12 @@ tools:context="com.example.android.bloodbankapp.newEntry.NewEntryDonorFragment">
             android:hint="Name" />
 
         <EditText
+
             android:id="@+id/et_dphone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:maxLength="10"
             android:hint="Phone"
             android:inputType="phone" />
 
