@@ -16,35 +16,24 @@
 
     <PreferenceScreen
         android:key="About_us"
-        android:title="About Us"
+        android:title="About us"
         android:persistent="false"
         >
 
         <Preference android:key="About_us"
             android:title="About us"
-            android:summary="."
             android:persistent="true"/>
         <Preference android:key="About_us"
-            android:title="Support"
-            android:summary="Display overall quantity of in and out flow of blood from blood bank of every month
-Detailed information of transactions of each blood type in that month.
-Put fetching from database to background thread.
-"
+            android:title="Application information"
+            android:summary="This app will contain blood bank details.Each blood bank will  maintain records for the quantity of blood that has been donated and quantity that has been distributed to hospitals which will be stored on a server.This information will be used to determine places with abundance and scarcity of blood which will reduce the wastage of blood where it is available in abundance"
             android:persistent="true"/><Preference android:key="About_us"
-        android:title="About US"
-        android:summary="Display overall quantity of in and out flow of blood from blood bank of every month
-Detailed information of transactions of each blood type in that month.
-Put fetching from database to background thread.
-"
+        android:title="Contact us at"
+        android:summary="Jai.hinduja@ves.ac.in \n Manisha.bahrani@ves.ac.in \n Shubham.ghossalkar@ves.ac.in
+             \n Sonia.chabbria@ves.ac.in \n Sooraj.holla@ves.ac.in \n Vaibhav.gaikwad@ves.ac.in"
         android:persistent="true"/>
     </PreferenceScreen>
-
-
     <PreferenceScreen
-        android:title="Logout"
-        >
-
-        <intent android:action="android.intent.ACTION_MAIN"/>
-
+        android:title="Logout">
+        <intent android:action="android.intent.ACTION.VIEW" android:targetPackage="com.example.android.bloodbankapp" android:targetClass="com.example.android.bloodbankapp.LoginActivity"/>
     </PreferenceScreen>
 </PreferenceScreen>
