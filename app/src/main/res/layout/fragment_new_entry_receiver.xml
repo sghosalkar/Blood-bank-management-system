@@ -34,6 +34,7 @@ tools:context="com.example.android.bloodbankapp.newEntry.NewEntryReceiverFragmen
             android:layout_height="wrap_content"
             android:hint="Phone"
             android:id="@+id/et_rphone"
+            android:maxLength="10"
             android:inputType="phone"
             android:layout_marginTop="10dp"
             />
