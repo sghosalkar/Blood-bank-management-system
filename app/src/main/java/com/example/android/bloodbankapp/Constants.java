@@ -6,7 +6,7 @@ package com.example.android.bloodbankapp;
 
 public class Constants {
 
-    public static final String IP_ADDRESS = "192.168.1.4";
+    public static final String IP_ADDRESS = "192.168.1.6";
 
     public static final String PORT_NUMBER = "80";
 }

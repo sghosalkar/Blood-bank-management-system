@@ -16,7 +16,7 @@
 
         />
     <TextView
-        android:layout_width="25dp"
+        android:layout_width="35dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_Received"
         android:layout_toRightOf="@+id/tv_month"

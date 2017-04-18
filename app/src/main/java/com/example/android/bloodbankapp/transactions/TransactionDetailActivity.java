@@ -44,7 +44,7 @@ public class TransactionDetailActivity extends AppCompatActivity {
             nameTextView.setText(mCursor.getString(mCursor.getColumnIndex(BloodBankContract.TransactionEntry.COLUMN_NAME)));
             contactTextView.setText(mCursor.getString(mCursor.getColumnIndex(BloodBankContract.TransactionEntry.COLUMN_CONTACT_NO)));
             bloodGroupTextView.setText(mCursor.getString(mCursor.getColumnIndex(BloodBankContract.TransactionEntry.COLUMN_BLOOD_GROUP)));
-            String quantityText = "Quantity: " + mCursor.getString(mCursor.getColumnIndex(BloodBankContract.TransactionEntry.COLUMN_QUANTITY));
+            String quantityText = "Quantity: " + mCursor.getString(mCursor.getColumnIndex(BloodBankContract.TransactionEntry.COLUMN_QUANTITY)) + " mL";
             quantityTextView.setText(quantityText);
             String priceText = "Amount associated: " + mCursor.getString(mCursor.getColumnIndex(BloodBankContract.TransactionEntry.COLUMN_PRICE));
             priceTextView.setText(priceText);

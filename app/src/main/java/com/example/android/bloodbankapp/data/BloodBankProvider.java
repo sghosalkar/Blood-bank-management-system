@@ -188,7 +188,7 @@ public class BloodBankProvider{
                             addTransactionInDb(contentValues, date);
                         }
                     } catch (Exception e) {
-                        Log.d("Server response:", "No data found");
+                        Log.d("Server response:", e.getMessage());
                     }
                 }
 
