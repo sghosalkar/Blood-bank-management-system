@@ -5,9 +5,262 @@
     tools:context="com.example.android.bloodbankapp.statistics.StatisticsStatusFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/title_status" />
+        android:stretchColumns="1">
+
+        <TableRow>
+            <TextView
+                android:text="Blood Group"
+                android:gravity="left"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+
+                android:padding="5dp" />
+            <TextView
+
+                android:text="Received"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="5dp" />
+            <TextView
+
+                android:text="Distributed"
+                android:gravity="right"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:padding="5dp" />
+        </TableRow>
+        <View
+            android:layout_height="2dip"
+            android:background="#FF909090" />
+
+
+        <TableRow>
+            <TextView
+                android:layout_gravity="left"
+                android:text="A +ve"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:paddingBottom="10dp"
+                android:id="@+id/tv_apos"
+                android:padding="3dip" />
+            <TextView
+                android:gravity="center"
+                android:text=""
+                android:id="@+id/tv_aposin"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+            <TextView
+                android:text=""
+                android:gravity="right"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/tv_aposout"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+        </TableRow>
+
+
+        <TableRow>
+            <TextView
+                android:layout_gravity="left"
+                android:text="A -ve"
+                android:id="@+id/tv_aneg"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+            <TextView
+                android:gravity="center"
+                android:text=""
+                android:id="@+id/tv_anegin"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+            <TextView
+                android:text=""
+                android:gravity="right"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/tv_anegout"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+        </TableRow>
+
+
+        <TableRow>
+            <TextView
+                android:layout_gravity="left"
+                android:text="B +ve"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/tv_bpos"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+            <TextView
+                android:gravity="center"
+                android:text=""
+                android:id="@+id/tv_bposin"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+            <TextView
+                android:text=""
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/tv_bposout"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:gravity="right"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_gravity="left"
+                android:text="B -ve"
+                android:id="@+id/tv_bneg"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+            <TextView
+                android:gravity="center"
+                android:text=""
+                android:id="@+id/tv_bnegin"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+            <TextView
+                android:text=""
+                android:gravity="right"
+                android:id="@+id/tv_bnegout"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_gravity="left"
+                android:text="AB +ve"
+                android:id="@+id/tv_abpos"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+            <TextView
+                android:gravity="center"
+                android:text=""
+                android:id="@+id/tv_abposin"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+            <TextView
+                android:text=""
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="right"
+                android:id="@+id/tv_abposout"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_gravity="left"
+                android:text="AB -ve"
+                android:id="@+id/tv_abneg"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+            <TextView
+                android:gravity="center"
+                android:text=""
+                android:id="@+id/tv_abnegin"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+            <TextView
+                android:text=""
+                android:gravity="right"
+                android:id="@+id/tv_abnegout"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_gravity="left"
+                android:text="O +ve"
+                android:id="@+id/tv_opos"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+            <TextView
+                android:gravity="center"
+                android:text=""
+                android:id="@+id/tv_oposin"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+            <TextView
+                android:text=""
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="right"
+                android:id="@+id/tv_oposout"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_gravity="left"
+                android:text="O -ve"
+                android:id="@+id/tv_oneg"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+            <TextView
+                android:gravity="center"
+                android:text=""
+                android:id="@+id/tv_onegin"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+            <TextView
+                android:text=""
+                android:gravity="right"
+                android:id="@+id/tv_onegout"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:padding="3dip" />
+        </TableRow>
+
+
+    </TableLayout>
 
 </FrameLayout>
