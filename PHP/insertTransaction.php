@@ -1,5 +1,4 @@
 <?php
-
 $bloodBankId = $_POST['bloodBankId'];
 $name = $_POST['name'];
 $contactNo = $_POST['contactNo'];
